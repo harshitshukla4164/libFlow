@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Return Book | College Library</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/return-book.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>College Library</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="admin-dashboard.html" class="nav-link">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Overview</span>
+            </a>
+
+            <div class="nav-section-title">Library</div>
+
+            <a href="book.html" class="nav-link">
+                <i class="fa-solid fa-book"></i>
+                <span>Books</span>
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span>Students</span>
+            </a>
+
+            <a href="issue-book.html" class="nav-link">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Issue Book</span>
+            </a>
+
+            <a href="return-book.html" class="nav-link active">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Return Book</span>
+            </a>
+
+            <a href="transactions.html" class="nav-link">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Transactions</span>
+            </a>
+
+            <div class="nav-section-title">Finance & Reports</div>
+
+            <a href="fines.html" class="nav-link">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                <span>Fines</span>
+            </a>
+
+            <a href="reports.html" class="nav-link">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Reports</span>
+            </a>
+
+            <div class="nav-section-title">Admin</div>
+
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="#" class="nav-link" data-logout>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="topbar-title">
+                <span>Library Management</span>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="icon-btn" id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="admin-profile">
+
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Admin</strong>
+                        <span>Librarian</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+        <section class="page-content">
+
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+
+                <div>
+
+                    <div class="breadcrumb">
+                        <span>Library</span>
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Return Book</span>
+                    </div>
+
+                    <h1>Return Book</h1>
+
+                    <p>
+                        Enter the issued book details and complete the return.
+                    </p>
+
+                </div>
+
+                <div class="page-date">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="currentDate">Today</span>
+                </div>
+
+            </div>
+
+
+            <!-- ================= STATS ================= -->
+            <div class="return-stats">
+
+                <div class="return-stat-card">
+
+                    <div class="return-stat-icon issued">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+
+                    <div>
+                        <span>Currently Issued</span>
+                        <strong>346</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="return-stat-card">
+
+                    <div class="return-stat-icon today">
+                        <i class="fa-solid fa-calendar-day"></i>
+                    </div>
+
+                    <div>
+                        <span>Due Today</span>
+                        <strong>12</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="return-stat-card">
+
+                    <div class="return-stat-icon overdue">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div>
+                        <span>Overdue</span>
+                        <strong>24</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="return-stat-card">
+
+                    <div class="return-stat-icon returned">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Returned Today</span>
+                        <strong>15</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= MAIN LAYOUT ================= -->
+            <div class="return-layout">
+
+                <!-- RETURN FORM -->
+                <div class="card return-form-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Book Return Details</h2>
+
+                            <p>
+                                Enter the details provided by the student.
+                            </p>
+                        </div>
+
+                        <div class="card-header-icon">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+
+                    </div>
+
+
+                    <form id="returnBookForm">
+
+                        <!-- STUDENT DETAILS -->
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <i class="fa-solid fa-user-graduate"></i>
+                                <span>Student Details</span>
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="studentName">
+                                        Student Name
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="studentName"
+                                        placeholder="Enter student name"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="rollNumber">
+                                        Roll Number
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="rollNumber"
+                                        placeholder="Enter roll number"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BOOK DETAILS -->
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <i class="fa-solid fa-book"></i>
+                                <span>Book Details</span>
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="bookTitle">
+                                        Book Title
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="bookTitle"
+                                        placeholder="Enter book title"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="bookId">
+                                        Book ID / ISBN
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="bookId"
+                                        placeholder="Enter Book ID or ISBN"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DATE DETAILS -->
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <i class="fa-regular fa-calendar"></i>
+                                <span>Return Details</span>
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="issueDate">
+                                        Issue Date
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="issueDate"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="dueDate">
+                                        Due Date
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="dueDate"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="returnDate">
+                                        Return Date
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="returnDate"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="overdueDays">
+                                        Overdue Days
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="overdueDays"
+                                        value="0 days"
+                                        readonly
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FINE & CONDITION -->
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Fine & Book Condition</span>
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="fineAmount">
+                                        Fine Amount
+                                    </label>
+
+                                    <div class="input-with-symbol">
+                                        <span>₹</span>
+
+                                        <input
+                                            type="text"
+                                            id="fineAmount"
+                                            value="0"
+                                            readonly
+                                        >
+                                    </div>
+
+                                    <small>
+                                        Fine rate: ₹5 per overdue day
+                                    </small>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="bookCondition">
+                                        Book Condition
+                                        <span>*</span>
+                                    </label>
+
+                                    <select id="bookCondition" required>
+
+                                        <option value="">
+                                            Select condition
+                                        </option>
+
+                                        <option value="Good">
+                                            Good
+                                        </option>
+
+                                        <option value="Damaged">
+                                            Damaged
+                                        </option>
+
+                                        <option value="Lost">
+                                            Lost
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="notes">
+                                    Notes
+                                </label>
+
+                                <textarea
+                                    id="notes"
+                                    rows="4"
+                                    placeholder="Add any remarks about the returned book..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ACTIONS -->
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                id="resetReturnForm"
+                            >
+                                <i class="fa-solid fa-rotate-left"></i>
+                                Reset
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                <i class="fa-solid fa-check"></i>
+                                Return Book
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- RIGHT SIDE -->
+                <div class="return-side-column">
+
+                    <!-- FINE INFO -->
+                    <div class="card fine-info-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Fine Information</h3>
+
+                                <p>
+                                    Late return calculation
+                                </p>
+                            </div>
+
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                        </div>
+
+
+                        <div class="fine-rate">
+
+                            <span>Fine Rate</span>
+
+                            <strong>₹5 / day</strong>
+
+                        </div>
+
+
+                        <div class="fine-example">
+
+                            <div>
+                                <span>5 overdue days</span>
+                                <strong>₹25</strong>
+                            </div>
+
+                            <div>
+                                <span>10 overdue days</span>
+                                <strong>₹50</strong>
+                            </div>
+
+                            <div>
+                                <span>No overdue</span>
+                                <strong>₹0</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RETURN GUIDELINES -->
+                    <div class="card return-guidelines">
+
+                        <div class="guideline-icon">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>
+
+                        <h3>Return Guidelines</h3>
+
+                        <ul>
+
+                            <li>
+                                Check the book condition before completing the return.
+                            </li>
+
+                            <li>
+                                Fine is calculated automatically for overdue books.
+                            </li>
+
+                            <li>
+                                Damaged or lost books should be recorded properly.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= RECENT RETURNS ================= -->
+            <div class="card recent-returns-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Recent Returns</h2>
+
+                        <p>
+                            Latest books returned to the library.
+                        </p>
+                    </div>
+
+                    <a href="transactions.html" class="btn btn-outline">
+                        View All
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Student</th>
+                                <th>Roll Number</th>
+                                <th>Book</th>
+                                <th>Return Date</th>
+                                <th>Overdue</th>
+                                <th>Fine</th>
+                                <th>Condition</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">RK</div>
+                                        <span>Rahul Kumar</span>
+                                    </div>
+                                </td>
+
+                                <td>CS2024012</td>
+
+                                <td>Clean Code</td>
+
+                                <td>15 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        0 Days
+                                    </span>
+                                </td>
+
+                                <td>₹0</td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        Good
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">PS</div>
+                                        <span>Priya Sharma</span>
+                                    </div>
+                                </td>
+
+                                <td>EC2024056</td>
+
+                                <td>Computer Networks</td>
+
+                                <td>15 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-danger">
+                                        3 Days
+                                    </span>
+                                </td>
+
+                                <td>₹15</td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        Good
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">AM</div>
+                                        <span>Aditya Mishra</span>
+                                    </div>
+                                </td>
+
+                                <td>ME2024034</td>
+
+                                <td>Engineering Mathematics</td>
+
+                                <td>14 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        0 Days
+                                    </span>
+                                </td>
+
+                                <td>₹0</td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        Good
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">SG</div>
+                                        <span>Simran Negi</span>
+                                    </div>
+                                </td>
+
+                                <td>IT2024019</td>
+
+                                <td>Atomic Habits</td>
+
+                                <td>13 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-danger">
+                                        5 Days
+                                    </span>
+                                </td>
+
+                                <td>₹25</td>
+
+                                <td>
+                                    <span class="badge badge-warning">
+                                        Damaged
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer class="page-footer">
+
+                <p>
+                    © <span data-year></span>
+                    College Library Management System.
+                    All rights reserved.
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= SUCCESS MODAL ================= -->
+    <div class="modal-overlay" id="returnSuccessModal">
+
+        <div class="modal return-success-modal">
+
+            <button class="modal-close" id="closeReturnModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="success-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h2>Book Returned Successfully</h2>
+
+            <p id="returnSuccessMessage">
+                The book has been successfully returned.
+            </p>
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                id="returnDoneBtn"
+            >
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- SCRIPTS -->
+    <script src="../js/app.js"></script>
+    <script src="../js/return-book.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | College Library</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Admin Login CSS -->
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+
+
+<body class="auth-page admin-auth">
+
+
+    <div class="auth-wrapper">
+
+
+        <!-- =================================
+             LEFT SIDE
+        ================================== -->
+        <section class="auth-brand-panel">
+
+
+            <div class="brand-panel-content">
+
+
+                <!-- Small Brand -->
+                <div class="auth-brand">
+
+                    <div class="auth-brand-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+
+                    <div>
+                        <strong>College Library</strong>
+                        <span>Management System</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Main Content -->
+                <div class="brand-main">
+
+
+                    <span class="brand-eyebrow">
+                        ADMINISTRATOR ACCESS
+                    </span>
+
+
+                    <h1>
+                        Library<br>
+                        <span>Desk.</span>
+                    </h1>
+
+
+                    <p>
+                        Manage books, students and daily library
+                        activities through one simple and organized
+                        system.
+                    </p>
+
+
+                    <!-- Features -->
+                    <div class="brand-features">
+
+
+                        <div class="brand-feature">
+
+                            <span class="feature-check">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+
+                            <span>
+                                Manage library books
+                            </span>
+
+                        </div>
+
+
+                        <div class="brand-feature">
+
+                            <span class="feature-check">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+
+                            <span>
+                                Track issue and return records
+                            </span>
+
+                        </div>
+
+
+                        <div class="brand-feature">
+
+                            <span class="feature-check">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+
+                            <span>
+                                Monitor fines and reports
+                            </span>
+
+                        </div>
+
+
+                        <div class="brand-feature">
+
+                            <span class="feature-check">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+
+                            <span>
+                                Manage student accounts
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- Bottom -->
+                <div class="brand-footer">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span>
+                        Secure access for authorized library staff
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             RIGHT SIDE
+        ================================== -->
+        <section class="auth-form-panel">
+
+
+            <div class="auth-form-container">
+
+
+                <!-- Icon -->
+                <div class="auth-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+
+                <!-- Heading -->
+                <div class="auth-heading">
+
+                    <span class="auth-kicker">
+                        MANAGEMENT SYSTEM
+                    </span>
+
+                    <h2>
+                        Admin Login
+                    </h2>
+
+                    <p>
+                        Sign in to access the library administration panel.
+                    </p>
+
+                </div>
+
+
+                <!-- Login Form -->
+                <form id="adminLoginForm" class="auth-form">
+
+
+                    <!-- Username -->
+                    <div class="form-group">
+
+                        <label for="adminUsername">
+                            Username
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-user input-icon"></i>
+
+                            <input
+                                type="text"
+                                id="adminUsername"
+                                name="username"
+                                placeholder="Enter username"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <label for="adminPassword">
+                            Password
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock input-icon"></i>
+
+                            <input
+                                type="password"
+                                id="adminPassword"
+                                name="password"
+                                placeholder="Enter password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                                aria-label="Show password"
+                            >
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Remember + Forgot -->
+                    <div class="form-options">
+
+
+                        <label class="remember-option">
+
+                            <input
+                                type="checkbox"
+                                id="rememberAdmin"
+                            >
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+
+                        <button
+                            type="button"
+                            class="forgot-btn"
+                            id="forgotPassword"
+                        >
+                            Forgot password?
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- Error -->
+                    <div
+                        class="auth-message auth-error"
+                        id="loginError"
+                    >
+                        <i class="fa-solid fa-circle-exclamation"></i>
+
+                        <span>
+                            Invalid username or password.
+                        </span>
+                    </div>
+
+
+                    <!-- Success -->
+                    <div
+                        class="auth-message auth-success"
+                        id="loginSuccess"
+                    >
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <span>
+                            Login successful. Redirecting...
+                        </span>
+                    </div>
+
+
+                    <!-- Login Button -->
+                    <button
+                        type="submit"
+                        class="auth-submit"
+                        id="loginButton"
+                    >
+
+                        <span>
+                            Login to Dashboard
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                </form>
+
+
+                <!-- Demo Login -->
+                <div class="demo-box">
+
+
+                    <div class="demo-heading">
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+                        <span>
+                            Demo Login
+                        </span>
+
+                    </div>
+
+
+                    <div class="demo-row">
+
+                        <span>
+                            Username
+                        </span>
+
+                        <strong>
+                            admin
+                        </strong>
+
+                    </div>
+
+
+                    <div class="demo-row">
+
+                        <span>
+                            Password
+                        </span>
+
+                        <strong>
+                            admin123
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Back Home -->
+                <a
+                    href="../index.html"
+                    class="back-home"
+                >
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    <span>
+                        Back to Home
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+    <!-- Global JS -->
+    <script src="../js/app.js"></script>
+
+    <!-- Admin Login JS -->
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>

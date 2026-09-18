@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports | Library Management System</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reports.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>LibraCore</h2>
+                <span>Library System</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN MENU</p>
+
+            <a href="admin-dashboard.html" class="nav-link">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="book.html" class="nav-link">
+                <i class="fa-solid fa-book"></i>
+                <span>Books</span>
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <i class="fa-solid fa-users"></i>
+                <span>Students</span>
+            </a>
+
+            <a href="issue-book.html" class="nav-link">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Issue Book</span>
+            </a>
+
+            <a href="return-book.html" class="nav-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Return Book</span>
+            </a>
+
+            <a href="transactions.html" class="nav-link">
+                <i class="fa-solid fa-receipt"></i>
+                <span>Transactions</span>
+            </a>
+
+            <p class="nav-title">MANAGEMENT</p>
+
+            <a href="fines.html" class="nav-link">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                <span>Fine Management</span>
+            </a>
+
+            <a href="reports.html" class="nav-link active">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="../index.html" class="nav-link">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="admin-login.html" class="nav-link" data-logout>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+        <!-- Topbar -->
+
+        <header class="topbar">
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <div class="topbar-title">
+
+                <h1>Reports</h1>
+
+                <p>
+                    View library performance and activity reports
+                </p>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <button
+                    class="notification-btn"
+                    id="notificationBtn"
+                >
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        AD
+                    </div>
+
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Library Manager</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+
+        <section class="page-content">
+
+
+            <!-- Header -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="page-label">
+                        <i class="fa-solid fa-chart-column"></i>
+                        LIBRARY REPORTS
+                    </span>
+
+                    <h2>Reports & Analytics</h2>
+
+                    <p>
+                        Get a quick overview of books, students,
+                        transactions and fines.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="btn btn-primary"
+                    id="downloadReportBtn"
+                >
+                    <i class="fa-solid fa-download"></i>
+                    Download Report
+                </button>
+
+            </div>
+
+
+            <!-- ================= FILTER ================= -->
+
+            <div class="report-filter-card">
+
+                <div class="report-filter-title">
+
+                    <div>
+
+                        <h3>Report Period</h3>
+
+                        <p>
+                            Select a period to view report data
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                </div>
+
+
+                <div class="report-filters">
+
+                    <select id="reportPeriod">
+
+                        <option value="month">
+                            This Month
+                        </option>
+
+                        <option value="last-month">
+                            Last Month
+                        </option>
+
+                        <option value="quarter">
+                            Last 3 Months
+                        </option>
+
+                        <option value="year">
+                            This Year
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        class="btn btn-secondary"
+                        id="generateReportBtn"
+                    >
+                        <i class="fa-solid fa-rotate"></i>
+                        Generate Report
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= STATS ================= -->
+
+            <div class="report-stats">
+
+                <div class="report-stat-card">
+
+                    <div class="report-stat-icon books">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+
+                    <div>
+
+                        <span>Books Issued</span>
+
+                        <h3 id="booksIssued">
+                            346
+                        </h3>
+
+                        <small>
+                            <i class="fa-solid fa-arrow-up"></i>
+                            8.4% from last period
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-stat-card">
+
+                    <div class="report-stat-icon returned">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </div>
+
+                    <div>
+
+                        <span>Books Returned</span>
+
+                        <h3 id="booksReturned">
+                            291
+                        </h3>
+
+                        <small>
+                            <i class="fa-solid fa-arrow-up"></i>
+                            5.2% from last period
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-stat-card">
+
+                    <div class="report-stat-icon students">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+
+                    <div>
+
+                        <span>Active Students</span>
+
+                        <h3 id="activeStudents">
+                            1,185
+                        </h3>
+
+                        <small>
+                            <i class="fa-solid fa-arrow-up"></i>
+                            3.7% from last period
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-stat-card">
+
+                    <div class="report-stat-icon fine">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+
+                    <div>
+
+                        <span>Fine Collected</span>
+
+                        <h3 id="fineCollected">
+                            ₹12,200
+                        </h3>
+
+                        <small>
+                            <i class="fa-solid fa-arrow-up"></i>
+                            6.1% from last period
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CHARTS ================= -->
+
+            <div class="reports-grid">
+
+
+                <!-- Monthly Activity -->
+
+                <div class="report-card activity-card">
+
+                    <div class="report-card-header">
+
+                        <div>
+
+                            <h3>Monthly Library Activity</h3>
+
+                            <p>
+                                Books issued and returned
+                            </p>
+
+                        </div>
+
+                        <span class="report-badge">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity-chart">
+
+                        <div class="chart-y-labels">
+
+                            <span>400</span>
+                            <span>300</span>
+                            <span>200</span>
+                            <span>100</span>
+                            <span>0</span>
+
+                        </div>
+
+
+                        <div class="chart-area">
+
+                            <div class="chart-grid-line line-1"></div>
+                            <div class="chart-grid-line line-2"></div>
+                            <div class="chart-grid-line line-3"></div>
+                            <div class="chart-grid-line line-4"></div>
+                            <div class="chart-grid-line line-5"></div>
+
+
+                            <div class="chart-bars">
+
+                                <div class="month-group">
+
+                                    <div
+                                        class="bar issued-bar"
+                                        style="height: 65%;"
+                                        title="January Issued: 260"
+                                    ></div>
+
+                                    <div
+                                        class="bar returned-bar"
+                                        style="height: 52%;"
+                                        title="January Returned: 208"
+                                    ></div>
+
+                                    <span>Jan</span>
+
+                                </div>
+
+
+                                <div class="month-group">
+
+                                    <div
+                                        class="bar issued-bar"
+                                        style="height: 72%;"
+                                        title="February Issued: 288"
+                                    ></div>
+
+                                    <div
+                                        class="bar returned-bar"
+                                        style="height: 60%;"
+                                        title="February Returned: 240"
+                                    ></div>
+
+                                    <span>Feb</span>
+
+                                </div>
+
+
+                                <div class="month-group">
+
+                                    <div
+                                        class="bar issued-bar"
+                                        style="height: 78%;"
+                                        title="March Issued: 312"
+                                    ></div>
+
+                                    <div
+                                        class="bar returned-bar"
+                                        style="height: 65%;"
+                                        title="March Returned: 260"
+                                    ></div>
+
+                                    <span>Mar</span>
+
+                                </div>
+
+
+                                <div class="month-group">
+
+                                    <div
+                                        class="bar issued-bar"
+                                        style="height: 70%;"
+                                        title="April Issued: 280"
+                                    ></div>
+
+                                    <div
+                                        class="bar returned-bar"
+                                        style="height: 62%;"
+                                        title="April Returned: 248"
+                                    ></div>
+
+                                    <span>Apr</span>
+
+                                </div>
+
+
+                                <div class="month-group">
+
+                                    <div
+                                        class="bar issued-bar"
+                                        style="height: 85%;"
+                                        title="May Issued: 340"
+                                    ></div>
+
+                                    <div
+                                        class="bar returned-bar"
+                                        style="height: 74%;"
+                                        title="May Returned: 296"
+                                    ></div>
+
+                                    <span>May</span>
+
+                                </div>
+
+
+                                <div class="month-group">
+
+                                    <div
+                                        class="bar issued-bar"
+                                        style="height: 80%;"
+                                        title="June Issued: 320"
+                                    ></div>
+
+                                    <div
+                                        class="bar returned-bar"
+                                        style="height: 69%;"
+                                        title="June Returned: 276"
+                                    ></div>
+
+                                    <span>Jun</span>
+
+                                </div>
+
+
+                                <div class="month-group">
+
+                                    <div
+                                        class="bar issued-bar"
+                                        style="height: 88%;"
+                                        title="July Issued: 352"
+                                    ></div>
+
+                                    <div
+                                        class="bar returned-bar"
+                                        style="height: 76%;"
+                                        title="July Returned: 304"
+                                    ></div>
+
+                                    <span>Jul</span>
+
+                                </div>
+
+
+                                <div class="month-group">
+
+                                    <div
+                                        class="bar issued-bar"
+                                        style="height: 82%;"
+                                        title="August Issued: 328"
+                                    ></div>
+
+                                    <div
+                                        class="bar returned-bar"
+                                        style="height: 72%;"
+                                        title="August Returned: 288"
+                                    ></div>
+
+                                    <span>Aug</span>
+
+                                </div>
+
+
+                                <div class="month-group">
+
+                                    <div
+                                        class="bar issued-bar"
+                                        style="height: 86%;"
+                                        title="September Issued: 346"
+                                    ></div>
+
+                                    <div
+                                        class="bar returned-bar"
+                                        style="height: 73%;"
+                                        title="September Returned: 291"
+                                    ></div>
+
+                                    <span>Sep</span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-legend">
+
+                        <span>
+                            <i class="legend-dot issued"></i>
+                            Issued
+                        </span>
+
+                        <span>
+                            <i class="legend-dot returned"></i>
+                            Returned
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Book Categories -->
+
+                <div class="report-card category-card">
+
+                    <div class="report-card-header">
+
+                        <div>
+
+                            <h3>Books by Category</h3>
+
+                            <p>
+                                Current collection
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-layer-group"></i>
+
+                    </div>
+
+
+                    <div class="category-list">
+
+                        <div class="category-item">
+
+                            <div class="category-info">
+                                <span>Computer Science</span>
+                                <strong>620</strong>
+                            </div>
+
+                            <div class="category-progress">
+                                <div style="width: 78%;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="category-item">
+
+                            <div class="category-info">
+                                <span>Programming</span>
+                                <strong>480</strong>
+                            </div>
+
+                            <div class="category-progress">
+                                <div style="width: 60%;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="category-item">
+
+                            <div class="category-info">
+                                <span>Management</span>
+                                <strong>365</strong>
+                            </div>
+
+                            <div class="category-progress">
+                                <div style="width: 46%;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="category-item">
+
+                            <div class="category-info">
+                                <span>Mathematics</span>
+                                <strong>310</strong>
+                            </div>
+
+                            <div class="category-progress">
+                                <div style="width: 39%;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="category-item">
+
+                            <div class="category-info">
+                                <span>Networking</span>
+                                <strong>275</strong>
+                            </div>
+
+                            <div class="category-progress">
+                                <div style="width: 34%;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="category-item">
+
+                            <div class="category-info">
+                                <span>Other</span>
+                                <strong>800</strong>
+                            </div>
+
+                            <div class="category-progress">
+                                <div style="width: 100%;"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= TOP BOOKS + DEPARTMENTS ================= -->
+
+            <div class="reports-bottom-grid">
+
+
+                <!-- Popular Books -->
+
+                <div class="report-card">
+
+                    <div class="report-card-header">
+
+                        <div>
+
+                            <h3>Most Issued Books</h3>
+
+                            <p>
+                                Popular books this month
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-fire"></i>
+
+                    </div>
+
+
+                    <div class="popular-books">
+
+                        <div class="popular-book">
+
+                            <div class="rank">
+                                01
+                            </div>
+
+                            <div class="popular-book-info">
+
+                                <strong>
+                                    Clean Code
+                                </strong>
+
+                                <span>
+                                    Robert C. Martin
+                                </span>
+
+                            </div>
+
+                            <strong class="issue-count">
+                                48
+                            </strong>
+
+                        </div>
+
+
+                        <div class="popular-book">
+
+                            <div class="rank">
+                                02
+                            </div>
+
+                            <div class="popular-book-info">
+
+                                <strong>
+                                    Atomic Habits
+                                </strong>
+
+                                <span>
+                                    James Clear
+                                </span>
+
+                            </div>
+
+                            <strong class="issue-count">
+                                42
+                            </strong>
+
+                        </div>
+
+
+                        <div class="popular-book">
+
+                            <div class="rank">
+                                03
+                            </div>
+
+                            <div class="popular-book-info">
+
+                                <strong>
+                                    Computer Networks
+                                </strong>
+
+                                <span>
+                                    Andrew S. Tanenbaum
+                                </span>
+
+                            </div>
+
+                            <strong class="issue-count">
+                                37
+                            </strong>
+
+                        </div>
+
+
+                        <div class="popular-book">
+
+                            <div class="rank">
+                                04
+                            </div>
+
+                            <div class="popular-book-info">
+
+                                <strong>
+                                    Database System Concepts
+                                </strong>
+
+                                <span>
+                                    Abraham Silberschatz
+                                </span>
+
+                            </div>
+
+                            <strong class="issue-count">
+                                31
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Department Activity -->
+
+                <div class="report-card">
+
+                    <div class="report-card-header">
+
+                        <div>
+
+                            <h3>Department Activity</h3>
+
+                            <p>
+                                Books issued by department
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-building-columns"></i>
+
+                    </div>
+
+
+                    <div class="department-list">
+
+                        <div class="department-row">
+
+                            <span>CSE</span>
+
+                            <div class="department-progress">
+                                <div style="width: 85%;"></div>
+                            </div>
+
+                            <strong>185</strong>
+
+                        </div>
+
+
+                        <div class="department-row">
+
+                            <span>IT</span>
+
+                            <div class="department-progress">
+                                <div style="width: 68%;"></div>
+                            </div>
+
+                            <strong>124</strong>
+
+                        </div>
+
+
+                        <div class="department-row">
+
+                            <span>ECE</span>
+
+                            <div class="department-progress">
+                                <div style="width: 55%;"></div>
+                            </div>
+
+                            <strong>96</strong>
+
+                        </div>
+
+
+                        <div class="department-row">
+
+                            <span>ME</span>
+
+                            <div class="department-progress">
+                                <div style="width: 43%;"></div>
+                            </div>
+
+                            <strong>74</strong>
+
+                        </div>
+
+
+                        <div class="department-row">
+
+                            <span>CE</span>
+
+                            <div class="department-progress">
+                                <div style="width: 35%;"></div>
+                            </div>
+
+                            <strong>58</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="../js/app.js"></script>
+<script src="../js/reports.js"></script>
+
+</body>
+</html>

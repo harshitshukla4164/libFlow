@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search Books | College Library</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/search-books.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<div class="library-layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>College Library</h2>
+                <span>Student Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN MENU</p>
+
+            <a href="student-dashboard.html" class="nav-link">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="search-books.html" class="nav-link active">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Search Books</span>
+            </a>
+
+            <a href="my-books.html" class="nav-link">
+                <i class="fa-solid fa-book"></i>
+                <span>My Books</span>
+            </a>
+
+            <a href="issue-history.html" class="nav-link">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Issue History</span>
+            </a>
+
+            <a href="fine-details.html" class="nav-link">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                <span>Fine Details</span>
+            </a>
+
+            <p class="nav-title">ACCOUNT</p>
+
+            <a href="profile.html" class="nav-link">
+                <i class="fa-solid fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+            <a href="student-login.html" class="nav-link" data-logout>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <i class="fa-solid fa-circle-info"></i>
+            <div>
+                <strong>Library Support</strong>
+                <small>Ask librarian for help</small>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="mobile-menu">
+                <button id="sidebarToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="topbar-title">
+                <span>Student Portal</span>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="topbar-icon" id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="user-mini">
+                    <div class="user-avatar">AT</div>
+
+                    <div class="user-mini-info">
+                        <strong>Ashutosh Tripathi</strong>
+                        <span>Student</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+        <section class="page-content">
+
+            <!-- PAGE HEADER -->
+            <div class="page-header search-page-header">
+
+                <div>
+                    <span class="page-kicker">
+                        <i class="fa-solid fa-book-open"></i>
+                        Library Catalogue
+                    </span>
+
+                    <h1>Search Books</h1>
+
+                    <p>
+                        Find a book and check its current availability before requesting it.
+                    </p>
+                </div>
+
+                <a href="my-books.html" class="btn btn-outline">
+                    <i class="fa-solid fa-book"></i>
+                    My Books
+                </a>
+
+            </div>
+
+
+            <!-- SEARCH PANEL -->
+            <div class="search-panel">
+
+                <div class="main-search">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="bookSearch"
+                        placeholder="Search by book title, author or Book ID..."
+                        autocomplete="off"
+                    >
+
+                    <button id="clearSearch" class="clear-search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                </div>
+
+
+                <div class="search-filters">
+
+                    <div class="filter-group">
+
+                        <label for="categoryFilter">
+                            Category
+                        </label>
+
+                        <select id="categoryFilter">
+
+                            <option value="all">
+                                All Categories
+                            </option>
+
+                            <option value="programming">
+                                Programming
+                            </option>
+
+                            <option value="computer science">
+                                Computer Science
+                            </option>
+
+                            <option value="database">
+                                Database
+                            </option>
+
+                            <option value="networking">
+                                Networking
+                            </option>
+
+                            <option value="mathematics">
+                                Mathematics
+                            </option>
+
+                            <option value="management">
+                                Management
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="availabilityFilter">
+                            Availability
+                        </label>
+
+                        <select id="availabilityFilter">
+
+                            <option value="all">
+                                All Books
+                            </option>
+
+                            <option value="available">
+                                Available
+                            </option>
+
+                            <option value="issued">
+                                Currently Issued
+                            </option>
+
+                            <option value="overdue">
+                                Overdue
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button class="btn btn-secondary" id="resetFilters">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK STATUS -->
+            <div class="availability-summary">
+
+                <div class="availability-card">
+
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-books"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Books</span>
+                        <strong id="totalBooks">8</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="availability-card available-card">
+
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Available Now</span>
+                        <strong id="availableBooks">4</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="availability-card issued-card">
+
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+
+                    <div>
+                        <span>Currently Issued</span>
+                        <strong id="issuedBooks">3</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="availability-card overdue-card">
+
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div>
+                        <span>Overdue</span>
+                        <strong id="overdueBooks">1</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULT HEADER -->
+            <div class="result-header">
+
+                <div>
+                    <h2>Library Books</h2>
+
+                    <p>
+                        <span id="resultCount">8</span> books found
+                    </p>
+                </div>
+
+                <div class="result-info">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Availability is updated by the library staff.
+                </div>
+
+            </div>
+
+
+            <!-- BOOK GRID -->
+            <div class="books-grid" id="booksGrid">
+
+
+                <!-- BOOK 1 -->
+                <article
+                    class="book-card"
+                    data-title="clean code"
+                    data-author="robert c martin"
+                    data-id="bk-1001"
+                    data-category="programming"
+                    data-status="available"
+                >
+
+                    <div class="book-cover cover-programming">
+                        <i class="fa-solid fa-code"></i>
+                        <span>PROGRAMMING</span>
+                    </div>
+
+                    <div class="book-content">
+
+                        <div class="book-top">
+
+                            <span class="book-id">
+                                BK-1001
+                            </span>
+
+                            <span class="status-badge status-available">
+                                Available
+                            </span>
+
+                        </div>
+
+                        <h3>Clean Code</h3>
+
+                        <p class="book-author">
+                            <i class="fa-solid fa-user-pen"></i>
+                            Robert C. Martin
+                        </p>
+
+                        <div class="book-meta">
+                            <span>
+                                <i class="fa-solid fa-tag"></i>
+                                Programming
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-layer-group"></i>
+                                3 Copies
+                            </span>
+                        </div>
+
+                        <button
+                            class="book-action request-btn"
+                            data-book="Clean Code"
+                        >
+                            <i class="fa-solid fa-hand"></i>
+                            Request Issue
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 2 -->
+                <article
+                    class="book-card"
+                    data-title="atomic habits"
+                    data-author="james clear"
+                    data-id="bk-1032"
+                    data-category="management"
+                    data-status="issued"
+                >
+
+                    <div class="book-cover cover-management">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>MANAGEMENT</span>
+                    </div>
+
+                    <div class="book-content">
+
+                        <div class="book-top">
+
+                            <span class="book-id">
+                                BK-1032
+                            </span>
+
+                            <span class="status-badge status-issued">
+                                Issued
+                            </span>
+
+                        </div>
+
+                        <h3>Atomic Habits</h3>
+
+                        <p class="book-author">
+                            <i class="fa-solid fa-user-pen"></i>
+                            James Clear
+                        </p>
+
+                        <div class="book-meta">
+                            <span>
+                                <i class="fa-solid fa-tag"></i>
+                                Management
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-copy"></i>
+                                0 Copies
+                            </span>
+                        </div>
+
+                        <button class="book-action disabled-action" disabled>
+                            <i class="fa-solid fa-clock"></i>
+                            Currently Issued
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 3 -->
+                <article
+                    class="book-card"
+                    data-title="introduction to algorithms"
+                    data-author="thomas h cormen"
+                    data-id="bk-1055"
+                    data-category="computer science"
+                    data-status="available"
+                >
+
+                    <div class="book-cover cover-cs">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <span>COMPUTER SCIENCE</span>
+                    </div>
+
+                    <div class="book-content">
+
+                        <div class="book-top">
+
+                            <span class="book-id">
+                                BK-1055
+                            </span>
+
+                            <span class="status-badge status-available">
+                                Available
+                            </span>
+
+                        </div>
+
+                        <h3>Introduction to Algorithms</h3>
+
+                        <p class="book-author">
+                            <i class="fa-solid fa-user-pen"></i>
+                            Thomas H. Cormen
+                        </p>
+
+                        <div class="book-meta">
+
+                            <span>
+                                <i class="fa-solid fa-tag"></i>
+                                Computer Science
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-layer-group"></i>
+                                2 Copies
+                            </span>
+
+                        </div>
+
+                        <button
+                            class="book-action request-btn"
+                            data-book="Introduction to Algorithms"
+                        >
+                            <i class="fa-solid fa-hand"></i>
+                            Request Issue
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 4 -->
+                <article
+                    class="book-card"
+                    data-title="computer networks"
+                    data-author="andrew s tanenbaum"
+                    data-id="bk-1018"
+                    data-category="networking"
+                    data-status="issued"
+                >
+
+                    <div class="book-cover cover-network">
+                        <i class="fa-solid fa-network-wired"></i>
+                        <span>NETWORKING</span>
+                    </div>
+
+                    <div class="book-content">
+
+                        <div class="book-top">
+
+                            <span class="book-id">
+                                BK-1018
+                            </span>
+
+                            <span class="status-badge status-issued">
+                                Issued
+                            </span>
+
+                        </div>
+
+                        <h3>Computer Networks</h3>
+
+                        <p class="book-author">
+                            <i class="fa-solid fa-user-pen"></i>
+                            Andrew S. Tanenbaum
+                        </p>
+
+                        <div class="book-meta">
+
+                            <span>
+                                <i class="fa-solid fa-tag"></i>
+                                Networking
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-copy"></i>
+                                0 Copies
+                            </span>
+
+                        </div>
+
+                        <button class="book-action disabled-action" disabled>
+                            <i class="fa-solid fa-clock"></i>
+                            Currently Issued
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 5 -->
+                <article
+                    class="book-card"
+                    data-title="database system concepts"
+                    data-author="abraham silberschatz"
+                    data-id="bk-1025"
+                    data-category="database"
+                    data-status="available"
+                >
+
+                    <div class="book-cover cover-database">
+                        <i class="fa-solid fa-database"></i>
+                        <span>DATABASE</span>
+                    </div>
+
+                    <div class="book-content">
+
+                        <div class="book-top">
+
+                            <span class="book-id">
+                                BK-1025
+                            </span>
+
+                            <span class="status-badge status-available">
+                                Available
+                            </span>
+
+                        </div>
+
+                        <h3>Database System Concepts</h3>
+
+                        <p class="book-author">
+                            <i class="fa-solid fa-user-pen"></i>
+                            Abraham Silberschatz
+                        </p>
+
+                        <div class="book-meta">
+
+                            <span>
+                                <i class="fa-solid fa-tag"></i>
+                                Database
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-layer-group"></i>
+                                4 Copies
+                            </span>
+
+                        </div>
+
+                        <button
+                            class="book-action request-btn"
+                            data-book="Database System Concepts"
+                        >
+                            <i class="fa-solid fa-hand"></i>
+                            Request Issue
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 6 -->
+                <article
+                    class="book-card"
+                    data-title="operating system concepts"
+                    data-author="abraham silberschatz"
+                    data-id="bk-1089"
+                    data-category="computer science"
+                    data-status="overdue"
+                >
+
+                    <div class="book-cover cover-os">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>COMPUTER SCIENCE</span>
+                    </div>
+
+                    <div class="book-content">
+
+                        <div class="book-top">
+
+                            <span class="book-id">
+                                BK-1089
+                            </span>
+
+                            <span class="status-badge status-overdue">
+                                Overdue
+                            </span>
+
+                        </div>
+
+                        <h3>Operating System Concepts</h3>
+
+                        <p class="book-author">
+                            <i class="fa-solid fa-user-pen"></i>
+                            Abraham Silberschatz
+                        </p>
+
+                        <div class="book-meta">
+
+                            <span>
+                                <i class="fa-solid fa-tag"></i>
+                                Computer Science
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-copy"></i>
+                                0 Copies
+                            </span>
+
+                        </div>
+
+                        <button class="book-action disabled-action" disabled>
+                            <i class="fa-solid fa-ban"></i>
+                            Not Available
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 7 -->
+                <article
+                    class="book-card"
+                    data-title="engineering mathematics"
+                    data-author="erwin kreyszig"
+                    data-id="bk-1042"
+                    data-category="mathematics"
+                    data-status="available"
+                >
+
+                    <div class="book-cover cover-math">
+                        <i class="fa-solid fa-square-root-variable"></i>
+                        <span>MATHEMATICS</span>
+                    </div>
+
+                    <div class="book-content">
+
+                        <div class="book-top">
+
+                            <span class="book-id">
+                                BK-1042
+                            </span>
+
+                            <span class="status-badge status-available">
+                                Available
+                            </span>
+
+                        </div>
+
+                        <h3>Engineering Mathematics</h3>
+
+                        <p class="book-author">
+                            <i class="fa-solid fa-user-pen"></i>
+                            Erwin Kreyszig
+                        </p>
+
+                        <div class="book-meta">
+
+                            <span>
+                                <i class="fa-solid fa-tag"></i>
+                                Mathematics
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-layer-group"></i>
+                                5 Copies
+                            </span>
+
+                        </div>
+
+                        <button
+                            class="book-action request-btn"
+                            data-book="Engineering Mathematics"
+                        >
+                            <i class="fa-solid fa-hand"></i>
+                            Request Issue
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 8 -->
+                <article
+                    class="book-card"
+                    data-title="the pragmatic programmer"
+                    data-author="david thomas"
+                    data-id="bk-1095"
+                    data-category="programming"
+                    data-status="issued"
+                >
+
+                    <div class="book-cover cover-programming">
+                        <i class="fa-solid fa-terminal"></i>
+                        <span>PROGRAMMING</span>
+                    </div>
+
+                    <div class="book-content">
+
+                        <div class="book-top">
+
+                            <span class="book-id">
+                                BK-1095
+                            </span>
+
+                            <span class="status-badge status-issued">
+                                Issued
+                            </span>
+
+                        </div>
+
+                        <h3>The Pragmatic Programmer</h3>
+
+                        <p class="book-author">
+                            <i class="fa-solid fa-user-pen"></i>
+                            David Thomas
+                        </p>
+
+                        <div class="book-meta">
+
+                            <span>
+                                <i class="fa-solid fa-tag"></i>
+                                Programming
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-copy"></i>
+                                0 Copies
+                            </span>
+
+                        </div>
+
+                        <button class="book-action disabled-action" disabled>
+                            <i class="fa-solid fa-clock"></i>
+                            Currently Issued
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- NO RESULT -->
+            <div class="no-results" id="noResults">
+
+                <div class="no-results-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <h3>No books found</h3>
+
+                <p>
+                    Try another book title, author name, Book ID or category.
+                </p>
+
+                <button class="btn btn-primary" id="noResultReset">
+                    Reset Search
+                </button>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= REQUEST MODAL ================= -->
+<div class="modal-overlay" id="requestModal">
+
+    <div class="request-modal">
+
+        <button class="modal-close" id="closeRequestModal">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="success-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <h2>Issue Request Submitted</h2>
+
+        <p id="requestMessage">
+            Your request has been recorded successfully.
+        </p>
+
+        <div class="request-note">
+            <i class="fa-solid fa-circle-info"></i>
+            Please wait for librarian approval before collecting the book.
+        </div>
+
+        <button class="btn btn-primary" id="requestDoneBtn">
+            Done
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- NOTIFICATION -->
+<div class="library-toast" id="libraryToast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Action completed successfully.</span>
+</div>
+
+
+<script src="../js/app.js"></script>
+<script src="../js/search-books.js"></script>
+
+</body>
+</html>

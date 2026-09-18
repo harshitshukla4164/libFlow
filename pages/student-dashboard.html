@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard | College Library</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/student-dashboard.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<div class="library-layout">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>College Library</h2>
+                <span>Student Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN MENU</p>
+
+            <a href="student-dashboard.html" class="nav-link active">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="search-books.html" class="nav-link">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Search Books</span>
+            </a>
+
+            <a href="my-books.html" class="nav-link">
+                <i class="fa-solid fa-book"></i>
+                <span>My Books</span>
+            </a>
+
+            <a href="issue-history.html" class="nav-link">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Issue History</span>
+            </a>
+
+            <a href="fine-details.html" class="nav-link">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                <span>Fine Details</span>
+            </a>
+
+
+            <p class="nav-title">ACCOUNT</p>
+
+            <a href="profile.html" class="nav-link">
+                <i class="fa-solid fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+            <a href="student-login.html" class="nav-link">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <div>
+                <strong>Library Support</strong>
+                <small>Ask librarian for help</small>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="mobile-menu">
+
+                <button id="sidebarToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+            </div>
+
+
+            <div class="topbar-title">
+                <span>Student Portal</span>
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <button
+                    class="topbar-icon"
+                    id="notificationBtn"
+                >
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <div class="user-mini">
+
+                    <div class="user-avatar">
+                        AT
+                    </div>
+
+                    <div class="user-mini-info">
+
+                        <strong>Ashutosh Tripathi</strong>
+
+                        <span>Student</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+
+        <section class="page-content">
+
+
+            <!-- WELCOME -->
+
+            <div class="student-welcome">
+
+                <div>
+
+                    <span class="welcome-label">
+                        STUDENT DASHBOARD
+                    </span>
+
+                    <h1>
+                        Welcome back, Ashutosh!
+                    </h1>
+
+                    <p>
+                        Manage your books, check availability and keep track
+                        of your library activities.
+                    </p>
+
+                </div>
+
+
+                <div class="welcome-date">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <div>
+                        <span>Today</span>
+                        <strong id="todayDate">15 Sep 2026</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= STATS ================= -->
+
+            <div class="student-stats">
+
+
+                <div class="student-stat-card">
+
+                    <div class="stat-icon chocolate">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+
+                    <div>
+                        <span>Books Issued</span>
+                        <strong>3</strong>
+                        <small>Currently with you</small>
+                    </div>
+
+                </div>
+
+
+                <div class="student-stat-card">
+
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>On Time</span>
+                        <strong>2</strong>
+                        <small>Books within due date</small>
+                    </div>
+
+                </div>
+
+
+                <div class="student-stat-card">
+
+                    <div class="stat-icon red">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div>
+                        <span>Overdue</span>
+                        <strong>1</strong>
+                        <small>Needs your attention</small>
+                    </div>
+
+                </div>
+
+
+                <div class="student-stat-card">
+
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+
+                    <div>
+                        <span>Pending Fine</span>
+                        <strong>₹40</strong>
+                        <small>Current outstanding amount</small>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= QUICK ACTIONS ================= -->
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Quick Actions</h2>
+                    <p>Access common library services</p>
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+
+                <a href="search-books.html" class="quick-action">
+
+                    <div class="quick-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <div>
+                        <strong>Search Books</strong>
+                        <span>Find books and check availability</span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+
+                </a>
+
+
+                <a href="my-books.html" class="quick-action">
+
+                    <div class="quick-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+
+                    <div>
+                        <strong>My Books</strong>
+                        <span>View currently issued books</span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+
+                </a>
+
+
+                <a href="issue-history.html" class="quick-action">
+
+                    <div class="quick-icon">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+
+                    <div>
+                        <strong>Issue History</strong>
+                        <span>View your previous issues</span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+
+                </a>
+
+
+                <a href="fine-details.html" class="quick-action">
+
+                    <div class="quick-icon">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+
+                    <div>
+                        <strong>Fine Details</strong>
+                        <span>Check pending and paid fines</span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+
+                </a>
+
+
+            </div>
+
+
+            <!-- ================= TWO COLUMN ================= -->
+
+            <div class="dashboard-columns">
+
+
+                <!-- CURRENT BOOKS -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h2>Currently Issued</h2>
+                            <p>Your active library books</p>
+                        </div>
+
+                        <a href="my-books.html">
+                            View All
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+
+                    <div class="current-books">
+
+
+                        <!-- BOOK 1 -->
+
+                        <div class="current-book">
+
+                            <div class="mini-book-cover">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+
+                            <div class="book-info">
+
+                                <strong>Clean Code</strong>
+
+                                <span>
+                                    Robert C. Martin
+                                </span>
+
+                                <small>
+                                    Due: 19 Sep 2026
+                                </small>
+
+                            </div>
+
+                            <span class="book-status on-time">
+                                On Time
+                            </span>
+
+                        </div>
+
+
+                        <!-- BOOK 2 -->
+
+                        <div class="current-book">
+
+                            <div class="mini-book-cover">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+
+                            <div class="book-info">
+
+                                <strong>
+                                    Database System Concepts
+                                </strong>
+
+                                <span>
+                                    Abraham Silberschatz
+                                </span>
+
+                                <small>
+                                    Due: 22 Sep 2026
+                                </small>
+
+                            </div>
+
+                            <span class="book-status on-time">
+                                On Time
+                            </span>
+
+                        </div>
+
+
+                        <!-- BOOK 3 -->
+
+                        <div class="current-book overdue-book">
+
+                            <div class="mini-book-cover">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+
+                            <div class="book-info">
+
+                                <strong>
+                                    Operating System Concepts
+                                </strong>
+
+                                <span>
+                                    Abraham Silberschatz
+                                </span>
+
+                                <small class="overdue-text">
+                                    Due: 29 Aug 2026
+                                </small>
+
+                            </div>
+
+                            <span class="book-status overdue">
+                                Overdue
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOOK AVAILABILITY -->
+
+                <div class="dashboard-card availability-widget">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h2>Find a Book</h2>
+                            <p>Check availability before visiting</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="availability-search">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="availabilitySearch"
+                            placeholder="Search book..."
+                        >
+
+                        <button id="availabilitySearchBtn">
+                            Search
+                        </button>
+
+                    </div>
+
+
+                    <div class="availability-result" id="availabilityResult">
+
+                        <div class="availability-placeholder">
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                            <p>
+                                Search for a book to check its availability.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="search-books.html"
+                        class="full-search-link"
+                    >
+                        Browse all books
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= NOTICE ================= -->
+
+            <div class="student-notice">
+
+                <div class="notice-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        You have 1 overdue book
+                    </strong>
+
+                    <p>
+                        Operating System Concepts is overdue by 17 days.
+                        Please return it to avoid additional fine.
+                    </p>
+
+                </div>
+
+                <a href="fine-details.html">
+                    View Fine
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="student-toast" id="studentToast">
+
+    <i class="fa-solid fa-circle-info"></i>
+
+    <span id="studentToastMessage">
+        Notification
+    </span>
+
+</div>
+
+
+<script src="../js/app.js"></script>
+<script src="../js/student-dashboard.js"></script>
+
+</body>
+</html>

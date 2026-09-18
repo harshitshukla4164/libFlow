@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fine Management | Library Management System</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/fines.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>LibraCore</h2>
+                <span>Library System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN MENU</p>
+
+            <a href="admin-dashboard.html" class="nav-link">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="book.html" class="nav-link">
+                <i class="fa-solid fa-book"></i>
+                <span>Books</span>
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <i class="fa-solid fa-users"></i>
+                <span>Students</span>
+            </a>
+
+            <a href="issue-book.html" class="nav-link">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Issue Book</span>
+            </a>
+
+            <a href="return-book.html" class="nav-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Return Book</span>
+            </a>
+
+            <a href="transactions.html" class="nav-link">
+                <i class="fa-solid fa-receipt"></i>
+                <span>Transactions</span>
+            </a>
+
+            <p class="nav-title">MANAGEMENT</p>
+
+            <a href="fines.html" class="nav-link active">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                <span>Fine Management</span>
+            </a>
+
+            <a href="reports.html" class="nav-link">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="../index.html" class="nav-link">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="admin-login.html" class="nav-link" data-logout>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="topbar-title">
+                <h1>Fine Management</h1>
+                <p>Track, collect and manage student fines</p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="notification-btn" id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="admin-profile">
+                    <div class="admin-avatar">AD</div>
+
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Library Manager</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Page Content -->
+        <section class="page-content">
+
+            <!-- Header -->
+            <div class="page-header">
+
+                <div>
+
+                    <span class="page-label">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                        FINE MANAGEMENT
+                    </span>
+
+                    <h2>Library Fines</h2>
+
+                    <p>
+                        Monitor pending fines and record payments.
+                    </p>
+
+                </div>
+
+                <button class="btn btn-primary" id="collectFineBtn">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    Collect Fine
+                </button>
+
+            </div>
+
+
+            <!-- Stats -->
+            <div class="fine-stats">
+
+                <div class="fine-stat-card">
+
+                    <div class="fine-stat-icon total">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Fine</span>
+                        <h3>₹18,450</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="fine-stat-card">
+
+                    <div class="fine-stat-icon pending">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <span>Pending</span>
+                        <h3>₹6,250</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="fine-stat-card">
+
+                    <div class="fine-stat-icon paid">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Collected</span>
+                        <h3>₹12,200</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="fine-stat-card">
+
+                    <div class="fine-stat-icon overdue">
+                        <i class="fa-solid fa-user-clock"></i>
+                    </div>
+
+                    <div>
+                        <span>Students with Fine</span>
+                        <h3>48</h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Fine Summary -->
+            <div class="fine-summary">
+
+                <div class="fine-summary-card">
+
+                    <div class="summary-heading">
+                        <div>
+                            <h3>Fine Summary</h3>
+                            <p>Current collection overview</p>
+                        </div>
+
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+
+                    <div class="fine-progress">
+
+                        <div class="progress-info">
+                            <span>Fine Collected</span>
+                            <strong>66%</strong>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="fine-summary-values">
+
+                        <div>
+                            <span>Collected</span>
+                            <strong>₹12,200</strong>
+                        </div>
+
+                        <div>
+                            <span>Pending</span>
+                            <strong>₹6,250</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="fine-policy-card">
+
+                    <div class="policy-icon">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+
+                    <div>
+                        <h3>Fine Policy</h3>
+
+                        <p>
+                            Library fine is charged at
+                            <strong>₹5 per overdue day</strong>.
+                        </p>
+
+                        <span>
+                            Maximum fine can be updated by the administrator.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Filters -->
+            <div class="fine-filter-card">
+
+                <div class="fine-filter-heading">
+
+                    <div>
+                        <h3>Fine Records</h3>
+                        <p>Search and filter student fine records</p>
+                    </div>
+
+                </div>
+
+
+                <div class="fine-filters">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="fineSearch"
+                            placeholder="Search student, roll number or book..."
+                        >
+
+                    </div>
+
+
+                    <select id="fineStatus">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="paid">
+                            Paid
+                        </option>
+
+                    </select>
+
+
+                    <select id="fineDepartment">
+
+                        <option value="all">
+                            All Departments
+                        </option>
+
+                        <option value="CSE">
+                            Computer Science
+                        </option>
+
+                        <option value="IT">
+                            Information Technology
+                        </option>
+
+                        <option value="ECE">
+                            Electronics
+                        </option>
+
+                        <option value="ME">
+                            Mechanical
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- Table -->
+            <div class="fine-table-card">
+
+                <div class="table-responsive">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Student</th>
+                                <th>Book</th>
+                                <th>Due Date</th>
+                                <th>Overdue Days</th>
+                                <th>Fine</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="fineTableBody">
+
+                            <tr
+                                data-status="pending"
+                                data-department="CSE"
+                            >
+
+                                <td>
+
+                                    <div class="table-user">
+
+                                        <div class="mini-avatar">
+                                            AS
+                                        </div>
+
+                                        <div>
+                                            <strong>Arjun Sharma</strong>
+                                            <span>CS2024012</span>
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>Operating System Concepts</strong>
+
+                                    <span class="book-meta">
+                                        BK-1156
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    03 Sep 2026
+                                </td>
+
+
+                                <td>
+                                    <span class="overdue-days">
+                                        12 days
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    <strong class="fine-value">
+                                        ₹60
+                                    </strong>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="badge badge-warning">
+                                        Pending
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        class="table-action collect-btn"
+                                        title="Collect Fine"
+                                    >
+                                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr
+                                data-status="paid"
+                                data-department="IT"
+                            >
+
+                                <td>
+
+                                    <div class="table-user">
+
+                                        <div class="mini-avatar">
+                                            RK
+                                        </div>
+
+                                        <div>
+                                            <strong>Rahul Kumar</strong>
+                                            <span>IT2024038</span>
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>Computer Networks</strong>
+
+                                    <span class="book-meta">
+                                        BK-1089
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    28 Aug 2026
+                                </td>
+
+
+                                <td>
+                                    <span class="overdue-days">
+                                        4 days
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    <strong class="fine-value">
+                                        ₹20
+                                    </strong>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="badge badge-success">
+                                        Paid
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        class="table-action view-payment-btn"
+                                        title="View Payment"
+                                    >
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr
+                                data-status="pending"
+                                data-department="ECE"
+                            >
+
+                                <td>
+
+                                    <div class="table-user">
+
+                                        <div class="mini-avatar">
+                                            PS
+                                        </div>
+
+                                        <div>
+                                            <strong>Priya Singh</strong>
+                                            <span>EC2024056</span>
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>Engineering Mathematics</strong>
+
+                                    <span class="book-meta">
+                                        BK-1201
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    06 Sep 2026
+                                </td>
+
+
+                                <td>
+                                    <span class="overdue-days">
+                                        8 days
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    <strong class="fine-value">
+                                        ₹40
+                                    </strong>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="badge badge-warning">
+                                        Pending
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        class="table-action collect-btn"
+                                        title="Collect Fine"
+                                    >
+                                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr
+                                data-status="paid"
+                                data-department="ME"
+                            >
+
+                                <td>
+
+                                    <div class="table-user">
+
+                                        <div class="mini-avatar">
+                                            VS
+                                        </div>
+
+                                        <div>
+                                            <strong>Vikas Singh</strong>
+                                            <span>ME2024019</span>
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>Engineering Drawing</strong>
+
+                                    <span class="book-meta">
+                                        BK-1220
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    25 Aug 2026
+                                </td>
+
+
+                                <td>
+                                    <span class="overdue-days">
+                                        3 days
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    <strong class="fine-value">
+                                        ₹15
+                                    </strong>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="badge badge-success">
+                                        Paid
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        class="table-action view-payment-btn"
+                                        title="View Payment"
+                                    >
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr
+                                data-status="pending"
+                                data-department="CSE"
+                            >
+
+                                <td>
+
+                                    <div class="table-user">
+
+                                        <div class="mini-avatar">
+                                            NM
+                                        </div>
+
+                                        <div>
+                                            <strong>Neha Mishra</strong>
+                                            <span>CS2024067</span>
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>Database System Concepts</strong>
+
+                                    <span class="book-meta">
+                                        BK-1098
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    08 Sep 2026
+                                </td>
+
+
+                                <td>
+                                    <span class="overdue-days">
+                                        6 days
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    <strong class="fine-value">
+                                        ₹30
+                                    </strong>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="badge badge-warning">
+                                        Pending
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        class="table-action collect-btn"
+                                        title="Collect Fine"
+                                    >
+                                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    class="fine-empty"
+                    id="fineEmpty"
+                >
+
+                    <i class="fa-solid fa-money-bill-wave"></i>
+
+                    <h3>No fine records found</h3>
+
+                    <p>
+                        Try changing your search or filters.
+                    </p>
+
+                </div>
+
+
+                <div class="fine-table-footer">
+
+                    <span id="fineCount">
+                        Showing 5 records
+                    </span>
+
+                    <div class="pagination-buttons">
+
+                        <button class="pagination-btn">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <button class="pagination-btn active">
+                            1
+                        </button>
+
+                        <button class="pagination-btn">
+                            2
+                        </button>
+
+                        <button class="pagination-btn">
+                            3
+                        </button>
+
+                        <button class="pagination-btn">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Collect Fine Modal -->
+
+<div class="modal-overlay" id="fineModal">
+
+    <div class="fine-modal">
+
+        <button
+            class="modal-close"
+            id="closeFineModal"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+
+        <div class="fine-modal-icon">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+        </div>
+
+
+        <h2>Collect Fine</h2>
+
+        <p class="modal-subtitle">
+            Confirm fine payment for this student.
+        </p>
+
+
+        <div id="fineDetails"></div>
+
+
+        <div class="payment-method">
+
+            <label>Payment Method</label>
+
+            <select id="paymentMethod">
+
+                <option value="cash">
+                    Cash
+                </option>
+
+                <option value="upi">
+                    UPI
+                </option>
+
+                <option value="card">
+                    Card
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            class="btn btn-primary modal-done-btn"
+            id="confirmFineBtn"
+        >
+            <i class="fa-solid fa-check"></i>
+            Confirm Payment
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="../js/app.js"></script>
+<script src="../js/fines.js"></script>
+
+</body>
+</html>

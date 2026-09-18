@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management | College Library</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/students.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>College Library</h2>
+                <span>Admin Panel</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="admin-dashboard.html" class="nav-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Overview</span>
+            </a>
+
+            <div class="nav-section-title">Library</div>
+
+            <a href="book.html" class="nav-link">
+                <i class="fas fa-book"></i>
+                <span>Books</span>
+            </a>
+
+            <a href="students.html" class="nav-link active">
+                <i class="fas fa-user-graduate"></i>
+                <span>Students</span>
+            </a>
+
+            <a href="issue-book.html" class="nav-link">
+                <i class="fas fa-arrow-right-from-bracket"></i>
+                <span>Issue Book</span>
+            </a>
+
+            <a href="return-book.html" class="nav-link">
+                <i class="fas fa-arrow-left"></i>
+                <span>Return Book</span>
+            </a>
+
+            <a href="transactions.html" class="nav-link">
+                <i class="fas fa-clock-rotate-left"></i>
+                <span>Transactions</span>
+            </a>
+
+            <div class="nav-section-title">Finance & Reports</div>
+
+            <a href="fines.html" class="nav-link">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Fines</span>
+            </a>
+
+            <a href="reports.html" class="nav-link">
+                <i class="fas fa-file-lines"></i>
+                <span>Reports</span>
+            </a>
+
+            <div class="nav-section-title">Admin</div>
+
+            <a href="settings.html" class="nav-link">
+                <i class="fas fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="#" class="nav-link" data-logout>
+                <i class="fas fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <i class="fas fa-shield-halved"></i>
+            <span>Administrator Access</span>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="topbar-title">
+                <h1>Student Management</h1>
+                <p>Manage registered students and their library access</p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="icon-btn" id="notificationBtn" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="admin-profile">
+                    <div class="admin-avatar">
+                        AD
+                    </div>
+
+                    <div class="admin-info">
+                        <strong>Admin</strong>
+                        <span>Administrator</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Page Content -->
+        <section class="page-content">
+
+            <!-- Page Header -->
+            <div class="page-header">
+
+                <div>
+                    <span class="page-label">
+                        <i class="fas fa-users"></i>
+                        STUDENT DIRECTORY
+                    </span>
+
+                    <h2>Students</h2>
+
+                    <p>
+                        View, search and manage all students registered with the library.
+                    </p>
+                </div>
+
+                <button class="btn btn-primary" id="addStudentBtn">
+                    <i class="fas fa-user-plus"></i>
+                    Add Student
+                </button>
+
+            </div>
+
+
+            <!-- Statistics -->
+            <div class="student-stats">
+
+                <div class="student-stat-card">
+
+                    <div class="student-stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Students</span>
+                        <strong id="totalStudents">1,240</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="student-stat-card">
+
+                    <div class="student-stat-icon active-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Active Students</span>
+                        <strong id="activeStudents">1,185</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="student-stat-card">
+
+                    <div class="student-stat-icon inactive-icon">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+
+                    <div>
+                        <span>Inactive Students</span>
+                        <strong id="inactiveStudents">55</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="student-stat-card">
+
+                    <div class="student-stat-icon department-icon">
+                        <i class="fas fa-building-columns"></i>
+                    </div>
+
+                    <div>
+                        <span>Departments</span>
+                        <strong>8</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Student Table Card -->
+            <div class="card students-table-card">
+
+                <!-- Filters -->
+                <div class="student-toolbar">
+
+                    <div class="student-search">
+
+                        <i class="fas fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="studentSearch"
+                            placeholder="Search by name, roll number or email..."
+                        >
+
+                        <button id="clearSearch" class="clear-search" title="Clear search">
+                            <i class="fas fa-xmark"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="student-filters">
+
+                        <select id="departmentFilter">
+                            <option value="all">All Departments</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Mechanical">Mechanical</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                        </select>
+
+
+                        <select id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+
+
+                        <button class="btn btn-outline" id="exportStudents">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Table -->
+                <div class="table-responsive">
+
+                    <table class="data-table student-table">
+
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Roll Number</th>
+                                <th>Department</th>
+                                <th>Year</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentTableBody">
+
+                            <tr
+                                data-name="Rahul Kumar"
+                                data-roll="CS2024012"
+                                data-department="Computer Science"
+                                data-status="Active"
+                            >
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="student-avatar">RK</div>
+
+                                        <div>
+                                            <strong>Rahul Kumar</strong>
+                                            <span>Library Member</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>CS2024012</td>
+
+                                <td>Computer Science</td>
+
+                                <td>2nd Year</td>
+
+                                <td>rahul.kumar@example.com</td>
+
+                                <td>
+                                    <span class="badge badge-success">Active</span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+
+                                        <button
+                                            class="action-btn edit-btn"
+                                            title="Edit Student"
+                                        >
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button
+                                            class="action-btn delete-btn"
+                                            title="Delete Student"
+                                        >
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-name="Priya Sharma"
+                                data-roll="EC2024056"
+                                data-department="Electronics"
+                                data-status="Active"
+                            >
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="student-avatar">PS</div>
+
+                                        <div>
+                                            <strong>Priya Sharma</strong>
+                                            <span>Library Member</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>EC2024056</td>
+                                <td>Electronics</td>
+                                <td>3rd Year</td>
+                                <td>priya.sharma@example.com</td>
+
+                                <td>
+                                    <span class="badge badge-success">Active</span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn edit-btn" title="Edit Student">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn" title="Delete Student">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-name="Aditya Mishra"
+                                data-roll="ME2024034"
+                                data-department="Mechanical"
+                                data-status="Active"
+                            >
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="student-avatar">AM</div>
+
+                                        <div>
+                                            <strong>Aditya Mishra</strong>
+                                            <span>Library Member</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>ME2024034</td>
+                                <td>Mechanical</td>
+                                <td>2nd Year</td>
+                                <td>aditya.mishra@example.com</td>
+
+                                <td>
+                                    <span class="badge badge-success">Active</span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-name="Simran Negi"
+                                data-roll="IT2024019"
+                                data-department="Information Technology"
+                                data-status="Active"
+                            >
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="student-avatar">SN</div>
+
+                                        <div>
+                                            <strong>Simran Negi</strong>
+                                            <span>Library Member</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>IT2024019</td>
+                                <td>Information Technology</td>
+                                <td>3rd Year</td>
+                                <td>simran.negi@example.com</td>
+
+                                <td>
+                                    <span class="badge badge-success">Active</span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-name="Neha Singh"
+                                data-roll="IT2023067"
+                                data-department="Information Technology"
+                                data-status="Inactive"
+                            >
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="student-avatar">NS</div>
+
+                                        <div>
+                                            <strong>Neha Singh</strong>
+                                            <span>Library Member</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>IT2023067</td>
+                                <td>Information Technology</td>
+                                <td>4th Year</td>
+                                <td>neha.singh@example.com</td>
+
+                                <td>
+                                    <span class="badge badge-danger">Inactive</span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-name="Rohit Verma"
+                                data-roll="CS2023051"
+                                data-department="Computer Science"
+                                data-status="Active"
+                            >
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="student-avatar">RV</div>
+
+                                        <div>
+                                            <strong>Rohit Verma</strong>
+                                            <span>Library Member</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>CS2023051</td>
+                                <td>Computer Science</td>
+                                <td>4th Year</td>
+                                <td>rohit.verma@example.com</td>
+
+                                <td>
+                                    <span class="badge badge-success">Active</span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-name="Ananya Gupta"
+                                data-roll="EE2024062"
+                                data-department="Electrical Engineering"
+                                data-status="Active"
+                            >
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="student-avatar">AG</div>
+
+                                        <div>
+                                            <strong>Ananya Gupta</strong>
+                                            <span>Library Member</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>EE2024062</td>
+                                <td>Electrical Engineering</td>
+                                <td>1st Year</td>
+                                <td>ananya.gupta@example.com</td>
+
+                                <td>
+                                    <span class="badge badge-success">Active</span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-name="Vivek Kumar"
+                                data-roll="CS2023045"
+                                data-department="Computer Science"
+                                data-status="Active"
+                            >
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="student-avatar">VK</div>
+
+                                        <div>
+                                            <strong>Vivek Kumar</strong>
+                                            <span>Library Member</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>CS2023045</td>
+                                <td>Computer Science</td>
+                                <td>4th Year</td>
+                                <td>vivek.kumar@example.com</td>
+
+                                <td>
+                                    <span class="badge badge-success">Active</span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <div class="no-students" id="noStudents">
+                        <i class="fas fa-user-slash"></i>
+                        <h3>No students found</h3>
+                        <p>Try changing your search or filter.</p>
+                    </div>
+
+                </div>
+
+
+                <!-- Pagination -->
+                <div class="table-footer">
+
+                    <div class="showing-text">
+                        Showing <strong id="visibleStudents">8</strong> of
+                        <strong>1,240</strong> students
+                    </div>
+
+                    <div class="pagination">
+
+                        <button class="pagination-btn" id="prevPage">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+
+                        <span>...</span>
+
+                        <button class="pagination-btn">155</button>
+
+                        <button class="pagination-btn" id="nextPage">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>
+                © <span data-year></span> College Library Management System
+            </p>
+
+            <span>
+                Student Management
+            </span>
+        </footer>
+
+    </main>
+
+
+    <!-- Add Student Modal -->
+    <div class="modal-overlay" id="studentModal">
+
+        <div class="modal student-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="modal-label">
+                        STUDENT REGISTRATION
+                    </span>
+
+                    <h3>Add New Student</h3>
+                </div>
+
+                <button class="modal-close" id="closeStudentModal">
+                    <i class="fas fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <form id="studentForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="studentName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentName"
+                            placeholder="Enter student's full name"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="rollNumber">
+                            Roll Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="rollNumber"
+                            placeholder="e.g. CS2024055"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="department">
+                            Department
+                        </label>
+
+                        <select id="department" required>
+                            <option value="">Select Department</option>
+                            <option>Computer Science</option>
+                            <option>Information Technology</option>
+                            <option>Electronics</option>
+                            <option>Mechanical</option>
+                            <option>Electrical Engineering</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="year">
+                            Year
+                        </label>
+
+                        <select id="year" required>
+                            <option value="">Select Year</option>
+                            <option>1st Year</option>
+                            <option>2nd Year</option>
+                            <option>3rd Year</option>
+                            <option>4th Year</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group full-width">
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="student@example.com"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="cancelStudent"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        <i class="fas fa-user-plus"></i>
+                        Add Student
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/app.js"></script>
+    <script src="../js/students.js"></script>
+
+</body>
+</html>

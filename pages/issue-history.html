@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue History - Library Management System</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/issue-history.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="student-page">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>Library</h2>
+                <span>Student Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="student-dashboard.html" class="nav-link">
+                <i class="fas fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="search-books.html" class="nav-link">
+                <i class="fas fa-search"></i>
+                <span>Search Books</span>
+            </a>
+
+            <a href="my-books.html" class="nav-link">
+                <i class="fas fa-book"></i>
+                <span>My Books</span>
+            </a>
+
+            <a href="issue-history.html" class="nav-link active">
+                <i class="fas fa-clock-rotate-left"></i>
+                <span>Issue History</span>
+            </a>
+
+            <a href="fine-details.html" class="nav-link">
+                <i class="fas fa-indian-rupee-sign"></i>
+                <span>Fine Details</span>
+            </a>
+
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="../index.html" class="nav-link">
+                <i class="fas fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <button class="nav-link logout-btn" data-logout>
+                <i class="fas fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div>
+                    <h1>Issue History</h1>
+                    <p>View your complete library book history</p>
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button class="icon-btn" id="notificationBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="student-profile-mini">
+
+                    <div class="student-avatar">AS</div>
+
+                    <div>
+                        <strong>Aditya Sharma</strong>
+                        <small>Student</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="page-content">
+
+            <!-- Header -->
+            <div class="page-header">
+
+                <div>
+                    <h2>Book Issue History</h2>
+                    <p>
+                        Track books that you have issued and returned.
+                    </p>
+                </div>
+
+                <a href="search-books.html" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Search Books
+                </a>
+
+            </div>
+
+
+            <!-- Statistics -->
+            <div class="stats-grid history-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon chocolate">
+                        <i class="fas fa-book"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Issues</span>
+                        <h3 id="totalIssues">8</h3>
+                        <small>All time</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon success">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+
+                    <div>
+                        <span>Returned</span>
+                        <h3 id="returnedBooks">5</h3>
+                        <small>Successfully returned</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon warning">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+
+                    <div>
+                        <span>Currently Issued</span>
+                        <h3 id="issuedBooks">2</h3>
+                        <small>Active issues</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon danger">
+                        <i class="fas fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div>
+                        <span>Overdue</span>
+                        <h3 id="overdueBooks">1</h3>
+                        <small>Needs attention</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Search & Filter -->
+            <div class="card history-controls">
+
+                <div class="search-box history-search">
+
+                    <i class="fas fa-search"></i>
+
+                    <input
+                        type="text"
+                        id="historySearch"
+                        placeholder="Search by book title, author or book ID..."
+                    >
+
+                </div>
+
+
+                <div class="filter-buttons">
+
+                    <button class="history-filter active" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="history-filter" data-filter="issued">
+                        Issued
+                    </button>
+
+                    <button class="history-filter" data-filter="returned">
+                        Returned
+                    </button>
+
+                    <button class="history-filter" data-filter="overdue">
+                        Overdue
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- History Table -->
+            <div class="card history-table-card">
+
+                <div class="table-header">
+
+                    <div>
+                        <h3>My Issue Records</h3>
+                        <p>Complete record of your book transactions.</p>
+                    </div>
+
+                    <span class="record-count" id="recordCount">
+                        8 Records
+                    </span>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Book</th>
+                                <th>Book ID</th>
+                                <th>Issue Date</th>
+                                <th>Due Date</th>
+                                <th>Return Date</th>
+                                <th>Status</th>
+                                <th>Fine</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="historyTableBody">
+
+                            <tr data-status="issued">
+
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="mini-book-icon">
+                                            <i class="fas fa-code"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Clean Code</strong>
+                                            <span>Robert C. Martin</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>BK-1001</td>
+                                <td>05 Sep 2026</td>
+                                <td>19 Sep 2026</td>
+                                <td>—</td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+
+                                <td>₹0</td>
+
+                            </tr>
+
+
+                            <tr data-status="issued">
+
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="mini-book-icon">
+                                            <i class="fas fa-database"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Database System Concepts</strong>
+                                            <span>Abraham Silberschatz</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>BK-1025</td>
+                                <td>08 Sep 2026</td>
+                                <td>22 Sep 2026</td>
+                                <td>—</td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+
+                                <td>₹0</td>
+
+                            </tr>
+
+
+                            <tr data-status="overdue">
+
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="mini-book-icon overdue">
+                                            <i class="fas fa-desktop"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Operating System Concepts</strong>
+                                            <span>Abraham Silberschatz</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>BK-1089</td>
+                                <td>15 Aug 2026</td>
+                                <td>29 Aug 2026</td>
+                                <td>—</td>
+
+                                <td>
+                                    <span class="badge badge-danger">
+                                        Overdue
+                                    </span>
+                                </td>
+
+                                <td class="fine-cell">₹40</td>
+
+                            </tr>
+
+
+                            <tr data-status="returned">
+
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="mini-book-icon">
+                                            <i class="fas fa-network-wired"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Computer Networks</strong>
+                                            <span>Andrew S. Tanenbaum</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>BK-1018</td>
+                                <td>12 Aug 2026</td>
+                                <td>26 Aug 2026</td>
+                                <td>25 Aug 2026</td>
+
+                                <td>
+                                    <span class="badge badge-info">
+                                        Returned
+                                    </span>
+                                </td>
+
+                                <td>₹0</td>
+
+                            </tr>
+
+
+                            <tr data-status="returned">
+
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="mini-book-icon">
+                                            <i class="fas fa-calculator"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Engineering Mathematics</strong>
+                                            <span>Erwin Kreyszig</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>BK-1042</td>
+                                <td>28 Jul 2026</td>
+                                <td>11 Aug 2026</td>
+                                <td>10 Aug 2026</td>
+
+                                <td>
+                                    <span class="badge badge-info">
+                                        Returned
+                                    </span>
+                                </td>
+
+                                <td>₹0</td>
+
+                            </tr>
+
+
+                            <tr data-status="returned">
+
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="mini-book-icon">
+                                            <i class="fas fa-leaf"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Introduction to Algorithms</strong>
+                                            <span>Thomas H. Cormen</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>BK-1055</td>
+                                <td>10 Jul 2026</td>
+                                <td>24 Jul 2026</td>
+                                <td>23 Jul 2026</td>
+
+                                <td>
+                                    <span class="badge badge-info">
+                                        Returned
+                                    </span>
+                                </td>
+
+                                <td>₹0</td>
+
+                            </tr>
+
+
+                            <tr data-status="returned">
+
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="mini-book-icon">
+                                            <i class="fas fa-brain"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Atomic Habits</strong>
+                                            <span>James Clear</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>BK-1032</td>
+                                <td>22 Jun 2026</td>
+                                <td>06 Jul 2026</td>
+                                <td>06 Jul 2026</td>
+
+                                <td>
+                                    <span class="badge badge-info">
+                                        Returned
+                                    </span>
+                                </td>
+
+                                <td>₹0</td>
+
+                            </tr>
+
+
+                            <tr data-status="returned">
+
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="mini-book-icon">
+                                            <i class="fas fa-terminal"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>The Pragmatic Programmer</strong>
+                                            <span>David Thomas</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>BK-1095</td>
+                                <td>05 Jun 2026</td>
+                                <td>19 Jun 2026</td>
+                                <td>18 Jun 2026</td>
+
+                                <td>
+                                    <span class="badge badge-info">
+                                        Returned
+                                    </span>
+                                </td>
+
+                                <td>₹0</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="no-history" id="noHistory" style="display:none;">
+
+                    <div class="no-history-icon">
+                        <i class="fas fa-clock-rotate-left"></i>
+                    </div>
+
+                    <h3>No Records Found</h3>
+
+                    <p>
+                        No issue records match your search or selected filter.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Information -->
+            <div class="card history-info">
+
+                <div class="info-icon">
+                    <i class="fas fa-circle-info"></i>
+                </div>
+
+                <div>
+                    <h3>About Issue History</h3>
+
+                    <p>
+                        This section keeps a record of all books issued to your
+                        account. Returned books remain here for future reference,
+                        while overdue books require your immediate attention.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div id="notification" class="notification"></div>
+
+
+    <script src="../js/app.js"></script>
+    <script src="../js/issue-history.js"></script>
+
+</body>
+</html>

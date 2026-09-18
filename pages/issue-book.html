@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Issue Book | College Library</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Issue Book CSS -->
+    <link rel="stylesheet" href="../css/issue-book.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>College Library</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="admin-dashboard.html" class="nav-link">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Overview</span>
+            </a>
+
+            <div class="nav-section-title">Library</div>
+
+            <a href="book.html" class="nav-link">
+                <i class="fa-solid fa-book"></i>
+                <span>Books</span>
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span>Students</span>
+            </a>
+
+            <a href="issue-book.html" class="nav-link active">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Issue Book</span>
+            </a>
+
+            <a href="return-book.html" class="nav-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Return Book</span>
+            </a>
+
+            <a href="transactions.html" class="nav-link">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Transactions</span>
+            </a>
+
+            <div class="nav-section-title">Finance & Reports</div>
+
+            <a href="fines.html" class="nav-link">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                <span>Fines</span>
+            </a>
+
+            <a href="reports.html" class="nav-link">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Reports</span>
+            </a>
+
+            <div class="nav-section-title">Admin</div>
+
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="#" class="nav-link" data-logout>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="topbar-title">
+                <span>Library Management</span>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="icon-btn" id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="admin-profile">
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Admin</strong>
+                        <span>Librarian</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+        <section class="page-content">
+
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+
+                <div>
+                    <div class="breadcrumb">
+                        <span>Library</span>
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Issue Book</span>
+                    </div>
+
+                    <h1>Issue Book</h1>
+
+                    <p>
+                        Enter student and book details to issue a book.
+                    </p>
+                </div>
+
+                <div class="page-date">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="currentDate">Today</span>
+                </div>
+
+            </div>
+
+
+            <!-- ================= STATS ================= -->
+            <div class="issue-stats">
+
+                <div class="issue-stat-card">
+                    <div class="issue-stat-icon available">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+
+                    <div>
+                        <span>Books Available</span>
+                        <strong>2,480</strong>
+                    </div>
+                </div>
+
+
+                <div class="issue-stat-card">
+                    <div class="issue-stat-icon issued">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+
+                    <div>
+                        <span>Currently Issued</span>
+                        <strong>346</strong>
+                    </div>
+                </div>
+
+
+                <div class="issue-stat-card">
+                    <div class="issue-stat-icon today">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </div>
+
+                    <div>
+                        <span>Issued Today</span>
+                        <strong>18</strong>
+                    </div>
+                </div>
+
+
+                <div class="issue-stat-card">
+                    <div class="issue-stat-icon overdue">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div>
+                        <span>Overdue Books</span>
+                        <strong>24</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ================= MAIN GRID ================= -->
+            <div class="issue-layout">
+
+                <!-- ISSUE FORM -->
+                <div class="card issue-form-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Issue Book</h2>
+                            <p>Enter the required details below.</p>
+                        </div>
+
+                        <div class="card-header-icon">
+                            <i class="fa-solid fa-book-medical"></i>
+                        </div>
+
+                    </div>
+
+
+                    <form id="issueBookForm">
+
+                        <!-- STUDENT DETAILS -->
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <i class="fa-solid fa-user-graduate"></i>
+                                <span>Student Details</span>
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="studentName">
+                                        Student Name
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="studentName"
+                                        name="studentName"
+                                        placeholder="Enter student name"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="rollNumber">
+                                        Roll Number
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="rollNumber"
+                                        name="rollNumber"
+                                        placeholder="Enter roll number"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="department">
+                                        Department
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="department"
+                                        name="department"
+                                        placeholder="e.g. Computer Science"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="studentYear">
+                                        Year
+                                    </label>
+
+                                    <select id="studentYear" name="studentYear">
+
+                                        <option value="">Select year</option>
+                                        <option value="1st Year">1st Year</option>
+                                        <option value="2nd Year">2nd Year</option>
+                                        <option value="3rd Year">3rd Year</option>
+                                        <option value="4th Year">4th Year</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BOOK DETAILS -->
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <i class="fa-solid fa-book"></i>
+                                <span>Book Details</span>
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="bookTitle">
+                                        Book Title
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="bookTitle"
+                                        name="bookTitle"
+                                        placeholder="Enter book title"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="bookId">
+                                        Book ID / ISBN
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="bookId"
+                                        name="bookId"
+                                        placeholder="Enter Book ID or ISBN"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="bookAuthor">
+                                        Author
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="bookAuthor"
+                                        name="bookAuthor"
+                                        placeholder="Enter author name"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="bookCategory">
+                                        Category
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="bookCategory"
+                                        name="bookCategory"
+                                        placeholder="e.g. Programming"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ISSUE DETAILS -->
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <i class="fa-regular fa-calendar"></i>
+                                <span>Issue Details</span>
+                            </div>
+
+
+                            <div class="form-row date-row">
+
+                                <div class="form-group">
+
+                                    <label for="issueDate">
+                                        Issue Date
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="issueDate"
+                                        name="issueDate"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="dueDate">
+                                        Due Date
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="dueDate"
+                                        name="dueDate"
+                                        required
+                                    >
+
+                                    <small>
+                                        Default return period: 14 days
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="notes">
+                                    Notes
+                                </label>
+
+                                <textarea
+                                    id="notes"
+                                    name="notes"
+                                    rows="4"
+                                    placeholder="Add any additional notes..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FORM ACTIONS -->
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                id="resetIssueForm"
+                            >
+                                <i class="fa-solid fa-rotate-left"></i>
+                                Reset
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                <i class="fa-solid fa-book-medical"></i>
+                                Issue Book
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- RIGHT SIDE -->
+                <div class="issue-side-column">
+
+                    <!-- POLICY CARD -->
+                    <div class="card policy-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Library Issue Policy</h3>
+                                <p>Keep these rules in mind.</p>
+                            </div>
+
+                            <i class="fa-solid fa-circle-info"></i>
+
+                        </div>
+
+
+                        <ul class="policy-list">
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <span>Books are normally issued for 14 days.</span>
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <span>Student must provide a valid roll number.</span>
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <span>One book should be recorded per transaction.</span>
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <span>Late returns may result in a fine.</span>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- QUICK HELP -->
+                    <div class="card quick-help-card">
+
+                        <div class="quick-help-icon">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+
+                        <h3>Quick Help</h3>
+
+                        <p>
+                            Enter the student's details and the book details
+                            exactly as they appear in the library records.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= RECENT ISSUES ================= -->
+            <div class="card recent-issues-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Recent Book Issues</h2>
+                        <p>Latest books issued from the library.</p>
+                    </div>
+
+                    <a href="transactions.html" class="btn btn-outline">
+                        View All
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="data-table">
+
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Roll Number</th>
+                                <th>Book</th>
+                                <th>Issue Date</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">RK</div>
+                                        <span>Rahul Kumar</span>
+                                    </div>
+                                </td>
+
+                                <td>CS2024012</td>
+
+                                <td>Clean Code</td>
+
+                                <td>15 Sep 2026</td>
+
+                                <td>29 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">PS</div>
+                                        <span>Priya Sharma</span>
+                                    </div>
+                                </td>
+
+                                <td>EC2024056</td>
+
+                                <td>Computer Networks</td>
+
+                                <td>14 Sep 2026</td>
+
+                                <td>28 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">AM</div>
+                                        <span>Aditya Mishra</span>
+                                    </div>
+                                </td>
+
+                                <td>ME2024034</td>
+
+                                <td>Engineering Mathematics</td>
+
+                                <td>13 Sep 2026</td>
+
+                                <td>27 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">SG</div>
+                                        <span>Simran Negi</span>
+                                    </div>
+                                </td>
+
+                                <td>IT2024019</td>
+
+                                <td>Atomic Habits</td>
+
+                                <td>12 Sep 2026</td>
+
+                                <td>26 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer class="page-footer">
+                <p>
+                    © <span data-year></span> College Library Management System.
+                    All rights reserved.
+                </p>
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= SUCCESS MODAL ================= -->
+    <div class="modal-overlay" id="issueSuccessModal">
+
+        <div class="modal issue-success-modal">
+
+            <button class="modal-close" id="closeIssueModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="success-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h2>Book Issued Successfully</h2>
+
+            <p id="successMessage">
+                The book has been successfully issued to the student.
+            </p>
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                id="successDoneBtn"
+            >
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="../js/app.js"></script>
+    <script src="../js/issue-book.js"></script>
+
+</body>
+</html>

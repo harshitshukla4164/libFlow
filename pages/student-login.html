@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Login | College Library</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/student-auth.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="auth-page student-auth">
+
+    <div class="auth-wrapper">
+
+        <!-- LEFT SIDE -->
+        <div class="auth-brand-panel">
+
+            <a href="../index.html" class="auth-logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <div>
+                    <strong>College Library</strong>
+                    <span>Management System</span>
+                </div>
+            </a>
+
+            <div class="brand-content">
+
+                <span class="brand-badge">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    Student Portal
+                </span>
+
+                <h1>
+                    Welcome back,<br>
+                    <span>Student!</span>
+                </h1>
+
+                <p>
+                    Login to access your books, issue history,
+                    fines and personal library details.
+                </p>
+
+                <div class="brand-features">
+
+                    <div class="brand-feature">
+                        <i class="fa-solid fa-book"></i>
+                        <span>Search & explore books</span>
+                    </div>
+
+                    <div class="brand-feature">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span>Check your issue history</span>
+                    </div>
+
+                    <div class="brand-feature">
+                        <i class="fa-solid fa-receipt"></i>
+                        <span>View your library fines</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="brand-footer">
+                <i class="fa-solid fa-shield-halved"></i>
+                Secure Student Access
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="auth-form-panel">
+
+            <div class="auth-form-container">
+
+                <a href="../index.html" class="mobile-back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Home
+                </a>
+
+
+                <!-- LOGIN FORM -->
+                <div id="loginSection">
+
+                    <div class="form-heading">
+
+                        <div class="heading-icon">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+
+                        <h2>Student Login</h2>
+
+                        <p>
+                            Enter your username and password to continue.
+                        </p>
+
+                    </div>
+
+
+                    <!-- ERROR -->
+                    <div id="studentLoginError" class="auth-message error-message">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span></span>
+                    </div>
+
+
+                    <!-- SUCCESS -->
+                    <div id="studentLoginSuccess" class="auth-message success-message">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span></span>
+                    </div>
+
+
+                    <form id="studentLoginForm">
+
+                        <!-- USERNAME -->
+                        <div class="form-group">
+
+                            <label for="studentUsername">
+                                Username
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-solid fa-user input-icon"></i>
+
+                                <input
+                                    type="text"
+                                    id="studentUsername"
+                                    placeholder="Enter your username"
+                                    autocomplete="username"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+                        <div class="form-group">
+
+                            <div class="label-row">
+
+                                <label for="studentPassword">
+                                    Password
+                                </label>
+
+                                <button
+                                    type="button"
+                                    id="forgotStudentPassword"
+                                    class="forgot-link"
+                                >
+                                    Forgot Password?
+                                </button>
+
+                            </div>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-solid fa-lock input-icon"></i>
+
+                                <input
+                                    type="password"
+                                    id="studentPassword"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    id="studentPasswordToggle"
+                                    class="password-toggle"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- REMEMBER -->
+                        <div class="remember-row">
+
+                            <label class="checkbox-label">
+
+                                <input
+                                    type="checkbox"
+                                    id="rememberStudent"
+                                >
+
+                                <span>Remember me</span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- LOGIN BUTTON -->
+                        <button
+                            type="submit"
+                            id="studentLoginButton"
+                            class="btn btn-primary auth-submit"
+                        >
+
+                            <span class="button-text">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                Login
+                            </span>
+
+                            <span class="button-loader">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                                Logging in...
+                            </span>
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- REGISTER LINK -->
+                    <div class="register-box">
+
+                        <p>
+                            New student?
+                            <button
+                                type="button"
+                                id="showRegister"
+                                class="register-link"
+                            >
+                                Register Now
+                            </button>
+                        </p>
+
+                    </div>
+
+
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+
+
+                    <a
+                        href="admin-login.html"
+                        class="admin-login-link"
+                    >
+                        <i class="fa-solid fa-user-shield"></i>
+                        Login as Administrator
+                    </a>
+
+                </div>
+
+
+                <!-- ============================= -->
+                <!-- REGISTRATION FORM -->
+                <!-- ============================= -->
+
+                <div id="registerSection" class="register-section">
+
+                    <div class="form-heading">
+
+                        <div class="heading-icon">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+
+                        <h2>Student Registration</h2>
+
+                        <p>
+                            Create your account to access the library portal.
+                        </p>
+
+                    </div>
+
+
+                    <!-- REGISTER ERROR -->
+                    <div id="registerError" class="auth-message error-message">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span></span>
+                    </div>
+
+
+                    <!-- REGISTER SUCCESS -->
+                    <div id="registerSuccess" class="auth-message success-message">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span></span>
+                    </div>
+
+
+                    <form id="studentRegisterForm">
+
+                        <!-- PERSONAL DETAILS -->
+
+                        <div class="form-section-title">
+                            <i class="fa-solid fa-user"></i>
+                            Personal Details
+                        </div>
+
+
+                        <div class="two-column">
+
+                            <!-- NAME -->
+                            <div class="form-group">
+
+                                <label for="registerName">
+                                    Full Name
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fa-solid fa-user input-icon"></i>
+
+                                    <input
+                                        type="text"
+                                        id="registerName"
+                                        placeholder="Enter full name"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- ROLL NUMBER -->
+                            <div class="form-group">
+
+                                <label for="registerRoll">
+                                    Roll Number
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fa-solid fa-id-card input-icon"></i>
+
+                                    <input
+                                        type="text"
+                                        id="registerRoll"
+                                        placeholder="Enter roll number"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="two-column">
+
+                            <!-- EMAIL -->
+                            <div class="form-group">
+
+                                <label for="registerEmail">
+                                    Email Address
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fa-solid fa-envelope input-icon"></i>
+
+                                    <input
+                                        type="email"
+                                        id="registerEmail"
+                                        placeholder="Enter email"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- MOBILE -->
+                            <div class="form-group">
+
+                                <label for="registerMobile">
+                                    Mobile Number
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fa-solid fa-phone input-icon"></i>
+
+                                    <input
+                                        type="tel"
+                                        id="registerMobile"
+                                        placeholder="10 digit mobile number"
+                                        maxlength="10"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ACADEMIC DETAILS -->
+
+                        <div class="form-section-title">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            Academic Details
+                        </div>
+
+
+                        <div class="two-column">
+
+                            <!-- DEPARTMENT -->
+                            <div class="form-group">
+
+                                <label for="registerDepartment">
+                                    Department
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fa-solid fa-building-columns input-icon"></i>
+
+                                    <select
+                                        id="registerDepartment"
+                                        required
+                                    >
+                                        <option value="">
+                                            Select Department
+                                        </option>
+
+                                        <option value="Computer Science">
+                                            Computer Science
+                                        </option>
+
+                                        <option value="Information Technology">
+                                            Information Technology
+                                        </option>
+
+                                        <option value="Electronics">
+                                            Electronics
+                                        </option>
+
+                                        <option value="Mechanical">
+                                            Mechanical
+                                        </option>
+
+                                        <option value="Civil">
+                                            Civil
+                                        </option>
+
+                                        <option value="Electrical">
+                                            Electrical
+                                        </option>
+
+                                        <option value="BCA">
+                                            BCA
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- COURSE -->
+                            <div class="form-group">
+
+                                <label for="registerCourse">
+                                    Course
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fa-solid fa-book-open input-icon"></i>
+
+                                    <select
+                                        id="registerCourse"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select Course
+                                        </option>
+
+                                        <option value="B.Tech">
+                                            B.Tech
+                                        </option>
+
+                                        <option value="BCA">
+                                            BCA
+                                        </option>
+
+                                        <option value="MCA">
+                                            MCA
+                                        </option>
+
+                                        <option value="M.Tech">
+                                            M.Tech
+                                        </option>
+
+                                        <option value="BBA">
+                                            BBA
+                                        </option>
+
+                                        <option value="MBA">
+                                            MBA
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="two-column">
+
+                            <!-- YEAR -->
+                            <div class="form-group">
+
+                                <label for="registerYear">
+                                    Year
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fa-solid fa-calendar-days input-icon"></i>
+
+                                    <select
+                                        id="registerYear"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select Year
+                                        </option>
+
+                                        <option value="1st Year">
+                                            1st Year
+                                        </option>
+
+                                        <option value="2nd Year">
+                                            2nd Year
+                                        </option>
+
+                                        <option value="3rd Year">
+                                            3rd Year
+                                        </option>
+
+                                        <option value="4th Year">
+                                            4th Year
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- SEMESTER -->
+                            <div class="form-group">
+
+                                <label for="registerSemester">
+                                    Semester
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fa-solid fa-layer-group input-icon"></i>
+
+                                    <select
+                                        id="registerSemester"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select Semester
+                                        </option>
+
+                                        <option value="1st Semester">
+                                            1st Semester
+                                        </option>
+
+                                        <option value="2nd Semester">
+                                            2nd Semester
+                                        </option>
+
+                                        <option value="3rd Semester">
+                                            3rd Semester
+                                        </option>
+
+                                        <option value="4th Semester">
+                                            4th Semester
+                                        </option>
+
+                                        <option value="5th Semester">
+                                            5th Semester
+                                        </option>
+
+                                        <option value="6th Semester">
+                                            6th Semester
+                                        </option>
+
+                                        <option value="7th Semester">
+                                            7th Semester
+                                        </option>
+
+                                        <option value="8th Semester">
+                                            8th Semester
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- LOGIN DETAILS -->
+
+                        <div class="form-section-title">
+                            <i class="fa-solid fa-key"></i>
+                            Login Details
+                        </div>
+
+
+                        <!-- USERNAME -->
+
+                        <div class="form-group">
+
+                            <label for="registerUsername">
+                                Username
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-solid fa-user-tag input-icon"></i>
+
+                                <input
+                                    type="text"
+                                    id="registerUsername"
+                                    placeholder="Create a username"
+                                    required
+                                >
+
+                            </div>
+
+                            <small class="input-help">
+                                Use at least 4 characters.
+                            </small>
+
+                        </div>
+
+
+                        <div class="two-column">
+
+                            <!-- PASSWORD -->
+                            <div class="form-group">
+
+                                <label for="registerPassword">
+                                    Password
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fa-solid fa-lock input-icon"></i>
+
+                                    <input
+                                        type="password"
+                                        id="registerPassword"
+                                        placeholder="Create password"
+                                        required
+                                    >
+
+                                    <button
+                                        type="button"
+                                        id="registerPasswordToggle"
+                                        class="password-toggle"
+                                    >
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- CONFIRM -->
+                            <div class="form-group">
+
+                                <label for="registerConfirmPassword">
+                                    Confirm Password
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <i class="fa-solid fa-lock input-icon"></i>
+
+                                    <input
+                                        type="password"
+                                        id="registerConfirmPassword"
+                                        placeholder="Confirm password"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- TERMS -->
+
+                        <label class="terms-label">
+
+                            <input
+                                type="checkbox"
+                                id="registerTerms"
+                                required
+                            >
+
+                            <span>
+                                I confirm that the information provided
+                                above is correct.
+                            </span>
+
+                        </label>
+
+
+                        <!-- REGISTER BUTTON -->
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary auth-submit"
+                            id="registerButton"
+                        >
+
+                            <span class="button-text">
+                                <i class="fa-solid fa-user-plus"></i>
+                                Create Account
+                            </span>
+
+                            <span class="button-loader">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                                Creating Account...
+                            </span>
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- BACK TO LOGIN -->
+
+                    <div class="back-login-box">
+
+                        <span>Already have an account?</span>
+
+                        <button
+                            type="button"
+                            id="showLogin"
+                            class="register-link"
+                        >
+                            Login Here
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOTER -->
+
+                <div class="auth-bottom">
+
+                    <a href="../index.html">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Back to Home
+                    </a>
+
+                    <span>© <span data-year></span> College Library</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/app.js"></script>
+    <script src="../js/student-auth.js"></script>
+
+</body>
+</html>

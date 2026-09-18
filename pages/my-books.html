@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books - Library Management System</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/my-books.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="student-page">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>Library</h2>
+                <span>Student Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="student-dashboard.html" class="nav-link">
+                <i class="fas fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="search-books.html" class="nav-link">
+                <i class="fas fa-search"></i>
+                <span>Search Books</span>
+            </a>
+
+            <a href="my-books.html" class="nav-link active">
+                <i class="fas fa-book"></i>
+                <span>My Books</span>
+            </a>
+
+            <a href="issue-history.html" class="nav-link">
+                <i class="fas fa-clock-rotate-left"></i>
+                <span>Issue History</span>
+            </a>
+
+            <a href="fine-details.html" class="nav-link">
+                <i class="fas fa-indian-rupee-sign"></i>
+                <span>Fine Details</span>
+            </a>
+
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../index.html" class="nav-link">
+                <i class="fas fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <button class="nav-link logout-btn" data-logout>
+                <i class="fas fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div>
+                    <h1>My Books</h1>
+                    <p>View and manage your currently issued books</p>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="icon-btn" id="notificationBtn" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="student-profile-mini">
+                    <div class="student-avatar">AS</div>
+
+                    <div>
+                        <strong>Aditya Sharma</strong>
+                        <small>Student</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="page-content">
+
+            <!-- Page Header -->
+            <div class="page-header my-books-header">
+
+                <div>
+                    <h2>Currently Issued Books</h2>
+                    <p>Books currently issued to your library account.</p>
+                </div>
+
+                <a href="search-books.html" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Search More Books
+                </a>
+
+            </div>
+
+
+            <!-- Statistics -->
+            <div class="stats-grid my-book-stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon chocolate">
+                        <i class="fas fa-book"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Issued</span>
+                        <h3 id="totalIssued">3</h3>
+                        <small>Current books</small>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon success">
+                        <i class="fas fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>On Time</span>
+                        <h3 id="onTimeBooks">2</h3>
+                        <small>No overdue</small>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon danger">
+                        <i class="fas fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div>
+                        <span>Overdue</span>
+                        <h3 id="overdueBooks">1</h3>
+                        <small>Needs attention</small>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon warning">
+                        <i class="fas fa-indian-rupee-sign"></i>
+                    </div>
+
+                    <div>
+                        <span>Current Fine</span>
+                        <h3 id="currentFine">₹40</h3>
+                        <small>Pending amount</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Search + Filter -->
+            <div class="card book-controls">
+
+                <div class="search-box my-book-search">
+                    <i class="fas fa-search"></i>
+                    <input
+                        type="text"
+                        id="bookSearch"
+                        placeholder="Search your issued books..."
+                    >
+                </div>
+
+                <div class="filter-buttons">
+
+                    <button class="filter-btn active" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-filter="ontime">
+                        On Time
+                    </button>
+
+                    <button class="filter-btn" data-filter="overdue">
+                        Overdue
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Books -->
+            <div class="my-books-list" id="myBooksList">
+
+                <!-- Book 1 -->
+                <div class="issued-book-card" data-status="ontime">
+
+                    <div class="book-cover">
+                        <i class="fas fa-code"></i>
+                    </div>
+
+                    <div class="book-main-info">
+
+                        <div class="book-title-row">
+                            <div>
+                                <h3>Clean Code</h3>
+                                <p>Robert C. Martin</p>
+                            </div>
+
+                            <span class="badge badge-success">
+                                On Time
+                            </span>
+                        </div>
+
+                        <div class="book-details">
+
+                            <div>
+                                <span>Book ID</span>
+                                <strong>BK-1001</strong>
+                            </div>
+
+                            <div>
+                                <span>Category</span>
+                                <strong>Programming</strong>
+                            </div>
+
+                            <div>
+                                <span>Issue Date</span>
+                                <strong>05 Sep 2026</strong>
+                            </div>
+
+                            <div>
+                                <span>Due Date</span>
+                                <strong>19 Sep 2026</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="book-actions">
+
+                            <span class="return-info">
+                                <i class="fas fa-calendar"></i>
+                                4 days remaining
+                            </span>
+
+                            <button class="btn btn-outline btn-sm renew-btn"
+                                    data-book="Clean Code">
+                                <i class="fas fa-rotate"></i>
+                                Renew Book
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Book 2 -->
+                <div class="issued-book-card" data-status="ontime">
+
+                    <div class="book-cover">
+                        <i class="fas fa-database"></i>
+                    </div>
+
+                    <div class="book-main-info">
+
+                        <div class="book-title-row">
+                            <div>
+                                <h3>Database System Concepts</h3>
+                                <p>Abraham Silberschatz</p>
+                            </div>
+
+                            <span class="badge badge-success">
+                                On Time
+                            </span>
+                        </div>
+
+                        <div class="book-details">
+
+                            <div>
+                                <span>Book ID</span>
+                                <strong>BK-1025</strong>
+                            </div>
+
+                            <div>
+                                <span>Category</span>
+                                <strong>Database</strong>
+                            </div>
+
+                            <div>
+                                <span>Issue Date</span>
+                                <strong>08 Sep 2026</strong>
+                            </div>
+
+                            <div>
+                                <span>Due Date</span>
+                                <strong>22 Sep 2026</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="book-actions">
+
+                            <span class="return-info">
+                                <i class="fas fa-calendar"></i>
+                                7 days remaining
+                            </span>
+
+                            <button class="btn btn-outline btn-sm renew-btn"
+                                    data-book="Database System Concepts">
+                                <i class="fas fa-rotate"></i>
+                                Renew Book
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Book 3 -->
+                <div class="issued-book-card overdue-card" data-status="overdue">
+
+                    <div class="book-cover overdue-cover">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+
+                    <div class="book-main-info">
+
+                        <div class="book-title-row">
+
+                            <div>
+                                <h3>Operating System Concepts</h3>
+                                <p>Abraham Silberschatz</p>
+                            </div>
+
+                            <span class="badge badge-danger">
+                                Overdue
+                            </span>
+
+                        </div>
+
+                        <div class="book-details">
+
+                            <div>
+                                <span>Book ID</span>
+                                <strong>BK-1089</strong>
+                            </div>
+
+                            <div>
+                                <span>Category</span>
+                                <strong>Computer Science</strong>
+                            </div>
+
+                            <div>
+                                <span>Issue Date</span>
+                                <strong>15 Aug 2026</strong>
+                            </div>
+
+                            <div>
+                                <span>Due Date</span>
+                                <strong>29 Aug 2026</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="book-actions">
+
+                            <span class="overdue-info">
+                                <i class="fas fa-circle-exclamation"></i>
+                                17 days overdue · Fine ₹40
+                            </span>
+
+                            <button class="btn btn-danger btn-sm return-info-btn"
+                                    data-book="Operating System Concepts">
+                                <i class="fas fa-arrow-rotate-left"></i>
+                                Return Required
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display:none;">
+
+                <div class="empty-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+
+                <h3>No Books Found</h3>
+
+                <p>
+                    No issued books match your search or selected filter.
+                </p>
+
+                <a href="search-books.html" class="btn btn-primary">
+                    Search Books
+                </a>
+
+            </div>
+
+
+            <!-- Library Policy -->
+            <div class="card book-policy">
+
+                <div class="policy-icon">
+                    <i class="fas fa-circle-info"></i>
+                </div>
+
+                <div>
+                    <h3>Library Reminder</h3>
+
+                    <p>
+                        Please return books before the due date to avoid late
+                        fines. Books can be renewed if no other student has
+                        requested them.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Renew Modal -->
+    <div class="modal-overlay" id="renewModal">
+
+        <div class="modal">
+
+            <button class="modal-close" id="closeRenewModal">
+                <i class="fas fa-xmark"></i>
+            </button>
+
+            <div class="modal-icon success">
+                <i class="fas fa-rotate"></i>
+            </div>
+
+            <h2>Renew Book</h2>
+
+            <p id="renewMessage">
+                Do you want to request renewal for this book?
+            </p>
+
+            <div class="modal-actions">
+
+                <button class="btn btn-secondary" id="cancelRenew">
+                    Cancel
+                </button>
+
+                <button class="btn btn-primary" id="confirmRenew">
+                    Confirm Renewal
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="notification" class="notification"></div>
+
+
+    <script src="../js/app.js"></script>
+    <script src="../js/my-books.js"></script>
+
+</body>
+</html>

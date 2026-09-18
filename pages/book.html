@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Management | College Library</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/books.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>College Library</h2>
+                <span>Admin Panel</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-section">
+                <p class="nav-title">Overview</p>
+
+                <a href="admin-dashboard.html" class="nav-link">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <p class="nav-title">Library</p>
+
+                <a href="book.html" class="nav-link active">
+                    <i class="fas fa-book"></i>
+                    <span>Books</span>
+                </a>
+
+                <a href="students.html" class="nav-link">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Students</span>
+                </a>
+
+                <a href="issue-book.html" class="nav-link">
+                    <i class="fas fa-arrow-right-from-bracket"></i>
+                    <span>Issue Book</span>
+                </a>
+
+                <a href="return-book.html" class="nav-link">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Return Book</span>
+                </a>
+
+                <a href="transactions.html" class="nav-link">
+                    <i class="fas fa-receipt"></i>
+                    <span>Transactions</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <p class="nav-title">Finance & Reports</p>
+
+                <a href="fines.html" class="nav-link">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Fine Management</span>
+                </a>
+
+                <a href="reports.html" class="nav-link">
+                    <i class="fas fa-file-lines"></i>
+                    <span>Reports</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <p class="nav-title">Admin</p>
+
+                <a href="settings.html" class="nav-link">
+                    <i class="fas fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+
+                <button class="nav-link logout-link" data-logout>
+                    <i class="fas fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-mini-profile">
+                <div class="admin-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div>
+                    <strong>Library Admin</strong>
+                    <small>Administrator</small>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div>
+                    <p class="welcome-small">Library Management</p>
+                    <h3>Book Management</h3>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="notification-btn" id="notificationBtn">
+                    <i class="far fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="topbar-profile">
+
+                    <div class="profile-avatar">A</div>
+
+                    <div class="profile-info">
+                        <strong>Admin</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                    <i class="fas fa-chevron-down profile-arrow"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+        <section class="page-content">
+
+            <!-- PAGE HEADER -->
+            <div class="books-page-header">
+
+                <div>
+                    <p class="page-breadcrumb">
+                        Library <span>/</span> Books
+                    </p>
+
+                    <h1>Book Management</h1>
+
+                    <p>
+                        Manage your library collection, book availability and records.
+                    </p>
+                </div>
+
+                <button class="btn btn-primary" id="addBookBtn">
+                    <i class="fas fa-plus"></i>
+                    Add New Book
+                </button>
+
+            </div>
+
+
+            <!-- BOOK STATISTICS -->
+            <div class="book-stats">
+
+                <div class="book-stat-card">
+                    <div class="book-stat-icon total">
+                        <i class="fas fa-books"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Books</span>
+                        <h2 id="totalBooks">2,850</h2>
+                    </div>
+                </div>
+
+
+                <div class="book-stat-card">
+                    <div class="book-stat-icon available">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+
+                    <div>
+                        <span>Available</span>
+                        <h2 id="availableBooks">2,480</h2>
+                    </div>
+                </div>
+
+
+                <div class="book-stat-card">
+                    <div class="book-stat-icon issued">
+                        <i class="fas fa-arrow-right-arrow-left"></i>
+                    </div>
+
+                    <div>
+                        <span>Issued</span>
+                        <h2 id="issuedBooks">346</h2>
+                    </div>
+                </div>
+
+
+                <div class="book-stat-card">
+                    <div class="book-stat-icon categories">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+
+                    <div>
+                        <span>Categories</span>
+                        <h2>12</h2>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- FILTER / SEARCH -->
+            <div class="books-toolbar">
+
+                <div class="book-search">
+
+                    <i class="fas fa-search"></i>
+
+                    <input
+                        type="text"
+                        id="bookSearch"
+                        placeholder="Search by title, author or ISBN..."
+                    >
+
+                    <button id="clearSearch" class="clear-search">
+                        <i class="fas fa-xmark"></i>
+                    </button>
+
+                </div>
+
+
+                <div class="book-filters">
+
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Database">Database</option>
+                        <option value="Networking">Networking</option>
+                        <option value="Management">Management</option>
+                        <option value="Mathematics">Mathematics</option>
+                    </select>
+
+
+                    <select id="availabilityFilter">
+                        <option value="all">All Status</option>
+                        <option value="available">Available</option>
+                        <option value="issued">Issued</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK TABLE CARD -->
+            <div class="books-table-card">
+
+                <div class="table-card-header">
+
+                    <div>
+                        <h3>Library Books</h3>
+
+                        <p>
+                            Showing
+                            <strong id="resultCount">8</strong>
+                            books
+                        </p>
+                    </div>
+
+                    <button class="btn btn-outline btn-small" id="exportBooks">
+                        <i class="fas fa-download"></i>
+                        Export
+                    </button>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="books-table">
+
+                        <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th>ISBN</th>
+                                <th>Category</th>
+                                <th>Author</th>
+                                <th>Copies</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+
+                        <tbody id="booksTableBody">
+
+                            <tr
+                                data-title="clean code"
+                                data-author="robert c martin"
+                                data-isbn="9780132350884"
+                                data-category="Programming"
+                                data-status="available"
+                            >
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="book-cover">
+                                            <i class="fas fa-code"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Clean Code</strong>
+                                            <span>Robert C. Martin</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>9780132350884</td>
+
+                                <td>
+                                    <span class="category-badge">
+                                        Programming
+                                    </span>
+                                </td>
+
+                                <td>Robert C. Martin</td>
+
+                                <td>
+                                    <strong>12</strong>
+                                    <small>12 available</small>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        Available
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+
+                                        <button class="action-btn edit-btn"
+                                                title="Edit Book">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn"
+                                                title="Delete Book">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-title="atomic habits"
+                                data-author="james clear"
+                                data-isbn="9780735211292"
+                                data-category="Management"
+                                data-status="issued"
+                            >
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="book-cover">
+                                            <i class="fas fa-brain"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Atomic Habits</strong>
+                                            <span>James Clear</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>9780735211292</td>
+
+                                <td>
+                                    <span class="category-badge">
+                                        Management
+                                    </span>
+                                </td>
+
+                                <td>James Clear</td>
+
+                                <td>
+                                    <strong>8</strong>
+                                    <small>2 available</small>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-title="introduction to algorithms"
+                                data-author="thomas cormen"
+                                data-isbn="9780262046305"
+                                data-category="Computer Science"
+                                data-status="available"
+                            >
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="book-cover">
+                                            <i class="fas fa-laptop-code"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Introduction to Algorithms</strong>
+                                            <span>Thomas H. Cormen</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>9780262046305</td>
+
+                                <td>
+                                    <span class="category-badge">
+                                        Computer Science
+                                    </span>
+                                </td>
+
+                                <td>Thomas H. Cormen</td>
+
+                                <td>
+                                    <strong>10</strong>
+                                    <small>10 available</small>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        Available
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-title="computer networks"
+                                data-author="andrew tanenbaum"
+                                data-isbn="9780132126953"
+                                data-category="Networking"
+                                data-status="issued"
+                            >
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="book-cover">
+                                            <i class="fas fa-network-wired"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Computer Networks</strong>
+                                            <span>Andrew S. Tanenbaum</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>9780132126953</td>
+
+                                <td>
+                                    <span class="category-badge">
+                                        Networking
+                                    </span>
+                                </td>
+
+                                <td>Andrew S. Tanenbaum</td>
+
+                                <td>
+                                    <strong>7</strong>
+                                    <small>1 available</small>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-title="database system concepts"
+                                data-author="silberschatz"
+                                data-isbn="9780078022159"
+                                data-category="Database"
+                                data-status="available"
+                            >
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="book-cover">
+                                            <i class="fas fa-database"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Database System Concepts</strong>
+                                            <span>Abraham Silberschatz</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>9780078022159</td>
+
+                                <td>
+                                    <span class="category-badge">
+                                        Database
+                                    </span>
+                                </td>
+
+                                <td>Abraham Silberschatz</td>
+
+                                <td>
+                                    <strong>9</strong>
+                                    <small>9 available</small>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        Available
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-title="operating system concepts"
+                                data-author="silberschatz"
+                                data-isbn="9781119456339"
+                                data-category="Computer Science"
+                                data-status="overdue"
+                            >
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="book-cover">
+                                            <i class="fas fa-desktop"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Operating System Concepts</strong>
+                                            <span>Abraham Silberschatz</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>9781119456339</td>
+
+                                <td>
+                                    <span class="category-badge">
+                                        Computer Science
+                                    </span>
+                                </td>
+
+                                <td>Abraham Silberschatz</td>
+
+                                <td>
+                                    <strong>6</strong>
+                                    <small>0 available</small>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-danger">
+                                        Overdue
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-title="engineering mathematics"
+                                data-author="erwin kreyszig"
+                                data-isbn="9788126561916"
+                                data-category="Mathematics"
+                                data-status="available"
+                            >
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="book-cover">
+                                            <i class="fas fa-square-root-variable"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>Engineering Mathematics</strong>
+                                            <span>Erwin Kreyszig</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>9788126561916</td>
+
+                                <td>
+                                    <span class="category-badge">
+                                        Mathematics
+                                    </span>
+                                </td>
+
+                                <td>Erwin Kreyszig</td>
+
+                                <td>
+                                    <strong>15</strong>
+                                    <small>15 available</small>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        Available
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-title="the pragmatic programmer"
+                                data-author="david thomas"
+                                data-isbn="9780135957059"
+                                data-category="Programming"
+                                data-status="issued"
+                            >
+                                <td>
+                                    <div class="book-cell">
+
+                                        <div class="book-cover">
+                                            <i class="fas fa-terminal"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>The Pragmatic Programmer</strong>
+                                            <span>David Thomas</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>9780135957059</td>
+
+                                <td>
+                                    <span class="category-badge">
+                                        Programming
+                                    </span>
+                                </td>
+
+                                <td>David Thomas</td>
+
+                                <td>
+                                    <strong>5</strong>
+                                    <small>1 available</small>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="table-actions">
+
+                                        <button class="action-btn edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="action-btn delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <div class="no-books" id="noBooks">
+                        <i class="fas fa-book-open"></i>
+                        <h3>No books found</h3>
+                        <p>Try changing your search or filter.</p>
+                    </div>
+
+                </div>
+
+
+                <!-- PAGINATION -->
+                <div class="books-pagination">
+
+                    <span>
+                        Showing <strong id="visibleCount">8</strong> books
+                    </span>
+
+                    <div class="pagination-buttons">
+
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADD BOOK MODAL -->
+        <div class="modal-overlay" id="bookModal">
+
+            <div class="book-modal">
+
+                <div class="modal-header">
+
+                    <div>
+                        <h3>Add New Book</h3>
+                        <p>Add a new book to your library collection.</p>
+                    </div>
+
+                    <button class="modal-close" id="closeBookModal">
+                        <i class="fas fa-xmark"></i>
+                    </button>
+
+                </div>
+
+
+                <form id="bookForm">
+
+                    <div class="book-form-grid">
+
+                        <div class="form-group">
+                            <label for="bookTitle">
+                                Book Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="bookTitle"
+                                placeholder="Enter book title"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="bookAuthor">
+                                Author
+                            </label>
+
+                            <input
+                                type="text"
+                                id="bookAuthor"
+                                placeholder="Enter author name"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="bookISBN">
+                                ISBN
+                            </label>
+
+                            <input
+                                type="text"
+                                id="bookISBN"
+                                placeholder="Enter ISBN number"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="bookCategory">
+                                Category
+                            </label>
+
+                            <select id="bookCategory" required>
+                                <option value="">Select category</option>
+                                <option>Computer Science</option>
+                                <option>Programming</option>
+                                <option>Database</option>
+                                <option>Networking</option>
+                                <option>Management</option>
+                                <option>Mathematics</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="bookPublisher">
+                                Publisher
+                            </label>
+
+                            <input
+                                type="text"
+                                id="bookPublisher"
+                                placeholder="Enter publisher"
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="bookCopies">
+                                Number of Copies
+                            </label>
+
+                            <input
+                                type="number"
+                                id="bookCopies"
+                                min="1"
+                                value="1"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-outline"
+                            id="cancelBookBtn"
+                        >
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            <i class="fas fa-plus"></i>
+                            Add Book
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="../js/app.js"></script>
+    <script src="../js/books.js"></script>
+
+</body>
+</html>

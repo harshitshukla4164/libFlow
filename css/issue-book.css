@@ -1,0 +1,557 @@
+/* =========================================
+   ISSUE BOOK PAGE
+   Chocolate + Cream Theme
+========================================= */
+
+.issue-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.issue-stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: var(--shadow-sm);
+}
+
+.issue-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+}
+
+.issue-stat-icon.available {
+    background: #eaf5ed;
+    color: #3f7d4d;
+}
+
+.issue-stat-icon.issued {
+    background: #f0e5dc;
+    color: var(--primary);
+}
+
+.issue-stat-icon.today {
+    background: #eee7df;
+    color: var(--light-chocolate);
+}
+
+.issue-stat-icon.overdue {
+    background: #fbe9e7;
+    color: #b7463f;
+}
+
+.issue-stat-card span {
+    display: block;
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.issue-stat-card strong {
+    font-size: 24px;
+    color: var(--text);
+    font-weight: 700;
+}
+
+
+/* =========================================
+   ISSUE LAYOUT
+========================================= */
+
+.issue-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 24px;
+    align-items: start;
+}
+
+.issue-form-card {
+    min-width: 0;
+}
+
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.issue-form-card .card-header,
+.policy-card .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.issue-form-card .card-header h2,
+.policy-card .card-header h3 {
+    margin: 0 0 5px;
+    color: var(--text);
+}
+
+.issue-form-card .card-header p,
+.policy-card .card-header p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+.card-header-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--cream);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+
+/* =========================================
+   FORM SECTIONS
+========================================= */
+
+.form-section {
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+}
+
+.form-section:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.form-section-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 18px;
+}
+
+.form-section-title i {
+    font-size: 15px;
+}
+
+
+/* =========================================
+   FORM ROW
+========================================= */
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.form-group label span {
+    color: #b7463f;
+    margin-left: 2px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text);
+    border-radius: 9px;
+    padding: 12px 13px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a69b91;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--light-chocolate);
+    box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.10);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 6px;
+    color: var(--text-light);
+    font-size: 11px;
+}
+
+
+/* =========================================
+   DATE ROW
+========================================= */
+
+.date-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+/* =========================================
+   FORM ACTIONS
+========================================= */
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
+    margin-top: 5px;
+}
+
+.form-actions .btn {
+    min-width: 130px;
+    justify-content: center;
+}
+
+
+/* =========================================
+   RIGHT SIDE COLUMN
+========================================= */
+
+.issue-side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.policy-card {
+    padding: 22px;
+}
+
+.policy-card .card-header i {
+    color: var(--light-chocolate);
+    font-size: 17px;
+}
+
+.policy-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.policy-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.policy-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.policy-list li:first-child {
+    padding-top: 0;
+}
+
+.policy-list li i {
+    color: #4d8658;
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   QUICK HELP
+========================================= */
+
+.quick-help-card {
+    padding: 22px;
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+.quick-help-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.quick-help-card h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+}
+
+.quick-help-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+
+/* =========================================
+   RECENT ISSUES
+========================================= */
+
+.recent-issues-card {
+    margin-top: 24px;
+}
+
+.recent-issues-card .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.recent-issues-card .card-header h2 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.recent-issues-card .card-header p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+.recent-issues-card .btn {
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   TABLE USER
+========================================= */
+
+.table-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mini-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--cream);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   SUCCESS MODAL
+========================================= */
+
+.issue-success-modal {
+    max-width: 430px;
+    width: calc(100% - 30px);
+    text-align: center;
+    padding: 35px 30px;
+    position: relative;
+}
+
+.issue-success-modal .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: #eaf5ed;
+    color: #3f7d4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+.issue-success-modal h2 {
+    margin: 0 0 10px;
+    color: var(--text);
+    font-size: 21px;
+}
+
+.issue-success-modal p {
+    margin: 0 auto 22px;
+    color: var(--text-light);
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+.issue-success-modal .btn {
+    min-width: 110px;
+}
+
+
+/* =========================================
+   PAGE DATE
+========================================= */
+
+.page-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.page-date i {
+    color: var(--primary);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .issue-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .issue-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .issue-side-column {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .issue-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .issue-stat-card {
+        padding: 15px;
+    }
+
+    .issue-stat-card strong {
+        font-size: 20px;
+    }
+
+    .issue-stat-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .form-row,
+    .date-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .issue-side-column {
+        grid-template-columns: 1fr;
+    }
+
+    .recent-issues-card .card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .recent-issues-card .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .page-date {
+        display: none;
+    }
+}
+
+
+@media (max-width: 520px) {
+
+    .issue-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .issue-stat-card {
+        padding: 16px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    .issue-form-card,
+    .policy-card,
+    .quick-help-card {
+        padding: 18px;
+    }
+
+    .issue-success-modal {
+        padding: 30px 20px;
+    }
+}

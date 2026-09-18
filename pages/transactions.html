@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transactions | Library Management System</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/transactions.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>LibraCore</h2>
+                <span>Library System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN MENU</p>
+
+            <a href="admin-dashboard.html" class="nav-link">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="book.html" class="nav-link">
+                <i class="fa-solid fa-book"></i>
+                <span>Books</span>
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <i class="fa-solid fa-users"></i>
+                <span>Students</span>
+            </a>
+
+            <a href="issue-book.html" class="nav-link">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Issue Book</span>
+            </a>
+
+            <a href="return-book.html" class="nav-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Return Book</span>
+            </a>
+
+            <a href="transactions.html" class="nav-link active">
+                <i class="fa-solid fa-receipt"></i>
+                <span>Transactions</span>
+            </a>
+
+            <p class="nav-title">MANAGEMENT</p>
+
+            <a href="fines.html" class="nav-link">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                <span>Fine Management</span>
+            </a>
+
+            <a href="reports.html" class="nav-link">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="../index.html" class="nav-link">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="admin-login.html" class="nav-link" data-logout>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="topbar-title">
+                <h1>Transactions</h1>
+                <p>Track all book issue and return activities</p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="notification-btn" id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="admin-profile">
+                    <div class="admin-avatar">AD</div>
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Library Manager</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Page Content -->
+        <section class="page-content">
+
+            <!-- Page Header -->
+            <div class="page-header">
+
+                <div>
+                    <span class="page-label">
+                        <i class="fa-solid fa-receipt"></i>
+                        TRANSACTION RECORDS
+                    </span>
+
+                    <h2>Library Transactions</h2>
+
+                    <p>
+                        View and manage all book issue and return transactions.
+                    </p>
+                </div>
+
+                <button class="btn btn-primary" id="exportBtn">
+                    <i class="fa-solid fa-download"></i>
+                    Export
+                </button>
+
+            </div>
+
+
+            <!-- Stats -->
+            <div class="transaction-stats">
+
+                <div class="transaction-stat-card">
+                    <div class="transaction-stat-icon total">
+                        <i class="fa-solid fa-list"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Transactions</span>
+                        <h3 id="totalTransactions">1,842</h3>
+                    </div>
+                </div>
+
+
+                <div class="transaction-stat-card">
+                    <div class="transaction-stat-icon issued">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+
+                    <div>
+                        <span>Books Issued</span>
+                        <h3 id="issuedTransactions">346</h3>
+                    </div>
+                </div>
+
+
+                <div class="transaction-stat-card">
+                    <div class="transaction-stat-icon returned">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </div>
+
+                    <div>
+                        <span>Books Returned</span>
+                        <h3 id="returnedTransactions">1,421</h3>
+                    </div>
+                </div>
+
+
+                <div class="transaction-stat-card">
+                    <div class="transaction-stat-icon overdue">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <span>Overdue</span>
+                        <h3 id="overdueTransactions">75</h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Filters -->
+            <div class="transaction-filter-card">
+
+                <div class="filter-heading">
+                    <div>
+                        <h3>Transaction History</h3>
+                        <p>Search and filter library records</p>
+                    </div>
+                </div>
+
+
+                <div class="transaction-filters">
+
+                    <div class="search-box transaction-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="transactionSearch"
+                            placeholder="Search student, book or transaction ID..."
+                        >
+                    </div>
+
+
+                    <select id="transactionType">
+                        <option value="all">All Transactions</option>
+                        <option value="issued">Issued</option>
+                        <option value="returned">Returned</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+
+
+                    <select id="transactionDepartment">
+                        <option value="all">All Departments</option>
+                        <option value="CSE">Computer Science</option>
+                        <option value="IT">Information Technology</option>
+                        <option value="ECE">Electronics</option>
+                        <option value="ME">Mechanical</option>
+                        <option value="CE">Civil</option>
+                    </select>
+
+
+                    <input
+                        type="date"
+                        id="transactionDate"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Table -->
+            <div class="transactions-table-card">
+
+                <div class="table-responsive">
+
+                    <table class="data-table" id="transactionsTable">
+
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Student</th>
+                                <th>Book</th>
+                                <th>Type</th>
+                                <th>Issue Date</th>
+                                <th>Due / Return Date</th>
+                                <th>Fine</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="transactionTableBody">
+
+                            <tr
+                                data-type="issued"
+                                data-department="CSE"
+                                data-date="2026-09-14"
+                            >
+                                <td>
+                                    <strong class="transaction-id">
+                                        TXN-2026-1842
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">AT</div>
+
+                                        <div>
+                                            <strong>Aditya Sharma</strong>
+                                            <span>CS2024012</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <strong>Clean Code</strong>
+                                    <span class="book-meta">BK-1024</span>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+
+                                <td>14 Sep 2026</td>
+
+                                <td>28 Sep 2026</td>
+
+                                <td>₹0</td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        Active
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button
+                                        class="table-action view-btn"
+                                        title="View Details"
+                                    >
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-type="returned"
+                                data-department="IT"
+                                data-date="2026-09-13"
+                            >
+                                <td>
+                                    <strong class="transaction-id">
+                                        TXN-2026-1841
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">RK</div>
+
+                                        <div>
+                                            <strong>Rahul Kumar</strong>
+                                            <span>IT2024038</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <strong>Computer Networks</strong>
+                                    <span class="book-meta">BK-1089</span>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-info">
+                                        Returned
+                                    </span>
+                                </td>
+
+                                <td>30 Aug 2026</td>
+
+                                <td>13 Sep 2026</td>
+
+                                <td>₹0</td>
+
+                                <td>
+                                    <span class="badge badge-info">
+                                        Completed
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button
+                                        class="table-action view-btn"
+                                        title="View Details"
+                                    >
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-type="overdue"
+                                data-department="ECE"
+                                data-date="2026-09-12"
+                            >
+                                <td>
+                                    <strong class="transaction-id">
+                                        TXN-2026-1840
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">PS</div>
+
+                                        <div>
+                                            <strong>Priya Singh</strong>
+                                            <span>EC2024056</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <strong>Operating System Concepts</strong>
+                                    <span class="book-meta">BK-1156</span>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-danger">
+                                        Overdue
+                                    </span>
+                                </td>
+
+                                <td>20 Aug 2026</td>
+
+                                <td>03 Sep 2026</td>
+
+                                <td>₹65</td>
+
+                                <td>
+                                    <span class="badge badge-danger">
+                                        Overdue
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button
+                                        class="table-action view-btn"
+                                        title="View Details"
+                                    >
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-type="returned"
+                                data-department="ME"
+                                data-date="2026-09-11"
+                            >
+                                <td>
+                                    <strong class="transaction-id">
+                                        TXN-2026-1839
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">VS</div>
+
+                                        <div>
+                                            <strong>Vikas Singh</strong>
+                                            <span>ME2024019</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <strong>Engineering Mathematics</strong>
+                                    <span class="book-meta">BK-1201</span>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-info">
+                                        Returned
+                                    </span>
+                                </td>
+
+                                <td>28 Aug 2026</td>
+
+                                <td>11 Sep 2026</td>
+
+                                <td>₹10</td>
+
+                                <td>
+                                    <span class="badge badge-info">
+                                        Completed
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button
+                                        class="table-action view-btn"
+                                        title="View Details"
+                                    >
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+
+                            <tr
+                                data-type="issued"
+                                data-department="CSE"
+                                data-date="2026-09-10"
+                            >
+                                <td>
+                                    <strong class="transaction-id">
+                                        TXN-2026-1838
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    <div class="table-user">
+                                        <div class="mini-avatar">NM</div>
+
+                                        <div>
+                                            <strong>Neha Mishra</strong>
+                                            <span>CS2024067</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <strong>Database System Concepts</strong>
+                                    <span class="book-meta">BK-1098</span>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">
+                                        Issued
+                                    </span>
+                                </td>
+
+                                <td>10 Sep 2026</td>
+
+                                <td>24 Sep 2026</td>
+
+                                <td>₹0</td>
+
+                                <td>
+                                    <span class="badge badge-success">
+                                        Active
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button
+                                        class="table-action view-btn"
+                                        title="View Details"
+                                    >
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Empty State -->
+                <div
+                    class="transaction-empty"
+                    id="transactionEmpty"
+                >
+                    <i class="fa-solid fa-receipt"></i>
+                    <h3>No transactions found</h3>
+                    <p>Try changing your search or filter.</p>
+                </div>
+
+
+                <!-- Pagination -->
+                <div class="transaction-pagination">
+
+                    <span id="transactionCount">
+                        Showing 5 transactions
+                    </span>
+
+                    <div class="pagination-buttons">
+
+                        <button class="pagination-btn">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <button class="pagination-btn active">
+                            1
+                        </button>
+
+                        <button class="pagination-btn">
+                            2
+                        </button>
+
+                        <button class="pagination-btn">
+                            3
+                        </button>
+
+                        <button class="pagination-btn">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Transaction Details Modal -->
+<div class="modal-overlay" id="transactionModal">
+
+    <div class="transaction-modal">
+
+        <button
+            class="modal-close"
+            id="closeTransactionModal"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="transaction-modal-icon">
+            <i class="fa-solid fa-receipt"></i>
+        </div>
+
+        <h2>Transaction Details</h2>
+
+        <p class="modal-subtitle">
+            Complete information about this transaction
+        </p>
+
+        <div id="transactionDetails"></div>
+
+        <button
+            class="btn btn-primary modal-done-btn"
+            id="transactionDoneBtn"
+        >
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="../js/app.js"></script>
+<script src="../js/transactions.js"></script>
+
+</body>
+</html>

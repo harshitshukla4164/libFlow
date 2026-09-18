@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | College Library</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>College Library</h2>
+                <span>Admin Panel</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-section">
+                <p class="nav-title">Overview</p>
+
+                <a href="admin-dashboard.html" class="nav-link active">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+
+
+            <div class="nav-section">
+                <p class="nav-title">Library</p>
+
+                <a href="book.html" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    <span>Books</span>
+                </a>
+
+                <a href="students.html" class="nav-link">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Students</span>
+                </a>
+
+                <a href="issue-book.html" class="nav-link">
+                    <i class="fas fa-arrow-right-from-bracket"></i>
+                    <span>Issue Book</span>
+                </a>
+
+                <a href="return-book.html" class="nav-link">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Return Book</span>
+                </a>
+
+                <a href="transactions.html" class="nav-link">
+                    <i class="fas fa-receipt"></i>
+                    <span>Transactions</span>
+                </a>
+            </div>
+
+
+            <div class="nav-section">
+                <p class="nav-title">Finance & Reports</p>
+
+                <a href="fines.html" class="nav-link">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Fine Management</span>
+                </a>
+
+                <a href="reports.html" class="nav-link">
+                    <i class="fas fa-file-lines"></i>
+                    <span>Reports</span>
+                </a>
+            </div>
+
+
+            <div class="nav-section">
+                <p class="nav-title">Admin</p>
+
+                <a href="settings.html" class="nav-link">
+                    <i class="fas fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+
+                <button class="nav-link logout-link" data-logout>
+                    <i class="fas fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-mini-profile">
+                <div class="admin-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div>
+                    <strong>Library Admin</strong>
+                    <small>Administrator</small>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div>
+                    <p class="welcome-small">Welcome back,</p>
+                    <h3>Library Admin</h3>
+                </div>
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button class="notification-btn" id="notificationBtn">
+                    <i class="far fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="topbar-profile">
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Admin</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                    <i class="fas fa-chevron-down profile-arrow"></i>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+        <section class="page-content">
+
+            <!-- PAGE HEADER -->
+            <div class="dashboard-header">
+
+                <div>
+                    <p class="dashboard-date" id="currentDate">
+                        Monday, 15 September 2026
+                    </p>
+
+                    <h1>Dashboard Overview</h1>
+
+                    <p>
+                        Keep track of books, students and library activities from one place.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+
+                    <button class="btn btn-outline" id="refreshDashboard">
+                        <i class="fas fa-rotate-right"></i>
+                        Refresh
+                    </button>
+
+                    <a href="issue-book.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Issue Book
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= STAT CARDS ================= -->
+            <div class="dashboard-stats">
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-card-top">
+                        <div class="dashboard-stat-icon books-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+
+                        <span class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            8.2%
+                        </span>
+                    </div>
+
+                    <div class="dashboard-stat-content">
+                        <span>Total Books</span>
+                        <h2>2,850</h2>
+                        <p>Books in library</p>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-card-top">
+                        <div class="dashboard-stat-icon available-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+
+                        <span class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            5.4%
+                        </span>
+                    </div>
+
+                    <div class="dashboard-stat-content">
+                        <span>Available Books</span>
+                        <h2>2,480</h2>
+                        <p>Currently available</p>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-card-top">
+                        <div class="dashboard-stat-icon issued-icon">
+                            <i class="fas fa-arrow-right-arrow-left"></i>
+                        </div>
+
+                        <span class="stat-trend neutral">
+                            This month
+                        </span>
+                    </div>
+
+                    <div class="dashboard-stat-content">
+                        <span>Books Issued</span>
+                        <h2>186</h2>
+                        <p>Currently issued</p>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-card-top">
+                        <div class="dashboard-stat-icon overdue-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+
+                        <span class="stat-trend negative">
+                            <i class="fas fa-arrow-up"></i>
+                            3.1%
+                        </span>
+                    </div>
+
+                    <div class="dashboard-stat-content">
+                        <span>Overdue Books</span>
+                        <h2>24</h2>
+                        <p>Need attention</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CHART + QUICK ACTION ================= -->
+            <div class="dashboard-grid-two">
+
+                <!-- Activity Chart -->
+                <div class="dashboard-card activity-card">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h3>Library Activity</h3>
+                            <p>Books issued and returned this week</p>
+                        </div>
+
+                        <select id="activityPeriod">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+
+                    </div>
+
+                    <div class="activity-chart">
+
+                        <div class="chart-y-axis">
+                            <span>40</span>
+                            <span>30</span>
+                            <span>20</span>
+                            <span>10</span>
+                            <span>0</span>
+                        </div>
+
+                        <div class="chart-area">
+
+                            <div class="chart-grid-line line-1"></div>
+                            <div class="chart-grid-line line-2"></div>
+                            <div class="chart-grid-line line-3"></div>
+                            <div class="chart-grid-line line-4"></div>
+                            <div class="chart-grid-line line-5"></div>
+
+                            <div class="chart-bars">
+
+                                <div class="chart-column">
+                                    <div class="bars">
+                                        <span class="bar issued" style="height: 65%;"></span>
+                                        <span class="bar returned" style="height: 45%;"></span>
+                                    </div>
+                                    <small>Mon</small>
+                                </div>
+
+                                <div class="chart-column">
+                                    <div class="bars">
+                                        <span class="bar issued" style="height: 78%;"></span>
+                                        <span class="bar returned" style="height: 60%;"></span>
+                                    </div>
+                                    <small>Tue</small>
+                                </div>
+
+                                <div class="chart-column">
+                                    <div class="bars">
+                                        <span class="bar issued" style="height: 55%;"></span>
+                                        <span class="bar returned" style="height: 72%;"></span>
+                                    </div>
+                                    <small>Wed</small>
+                                </div>
+
+                                <div class="chart-column">
+                                    <div class="bars">
+                                        <span class="bar issued" style="height: 88%;"></span>
+                                        <span class="bar returned" style="height: 65%;"></span>
+                                    </div>
+                                    <small>Thu</small>
+                                </div>
+
+                                <div class="chart-column">
+                                    <div class="bars">
+                                        <span class="bar issued" style="height: 70%;"></span>
+                                        <span class="bar returned" style="height: 52%;"></span>
+                                    </div>
+                                    <small>Fri</small>
+                                </div>
+
+                                <div class="chart-column">
+                                    <div class="bars">
+                                        <span class="bar issued" style="height: 48%;"></span>
+                                        <span class="bar returned" style="height: 40%;"></span>
+                                    </div>
+                                    <small>Sat</small>
+                                </div>
+
+                                <div class="chart-column">
+                                    <div class="bars">
+                                        <span class="bar issued" style="height: 25%;"></span>
+                                        <span class="bar returned" style="height: 20%;"></span>
+                                    </div>
+                                    <small>Sun</small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="chart-legend">
+                        <span>
+                            <i class="legend-dot issued-dot"></i>
+                            Issued
+                        </span>
+
+                        <span>
+                            <i class="legend-dot returned-dot"></i>
+                            Returned
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <!-- Quick Actions -->
+                <div class="dashboard-card quick-actions-card">
+
+                    <div class="card-heading">
+                        <div>
+                            <h3>Quick Actions</h3>
+                            <p>Common library tasks</p>
+                        </div>
+                    </div>
+
+                    <div class="quick-actions">
+
+                        <a href="book.html" class="quick-action">
+                            <div class="quick-action-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+
+                            <div>
+                                <strong>Manage Books</strong>
+                                <span>Add, edit or remove books</span>
+                            </div>
+
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+
+
+                        <a href="students.html" class="quick-action">
+                            <div class="quick-action-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+
+                            <div>
+                                <strong>Manage Students</strong>
+                                <span>View student records</span>
+                            </div>
+
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+
+
+                        <a href="issue-book.html" class="quick-action">
+                            <div class="quick-action-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+
+                            <div>
+                                <strong>Issue a Book</strong>
+                                <span>Issue a book to student</span>
+                            </div>
+
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+
+
+                        <a href="return-book.html" class="quick-action">
+                            <div class="quick-action-icon">
+                                <i class="fas fa-rotate-left"></i>
+                            </div>
+
+                            <div>
+                                <strong>Return a Book</strong>
+                                <span>Process book returns</span>
+                            </div>
+
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= RECENT TRANSACTIONS ================= -->
+            <div class="dashboard-card table-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>Recent Transactions</h3>
+                        <p>Latest book issue and return activities</p>
+                    </div>
+
+                    <a href="transactions.html" class="view-all">
+                        View All
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="dashboard-table">
+
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Book</th>
+                                <th>Transaction</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="table-avatar">RK</div>
+                                        <div>
+                                            <strong>Rahul Kumar</strong>
+                                            <small>CS2024012</small>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <strong>Clean Code</strong>
+                                    <small>Robert C. Martin</small>
+                                </td>
+
+                                <td>
+                                    <span class="transaction-type issue-type">
+                                        <i class="fas fa-arrow-up"></i>
+                                        Issue
+                                    </span>
+                                </td>
+
+                                <td>15 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">Issued</span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="table-avatar">PS</div>
+                                        <div>
+                                            <strong>Priya Sharma</strong>
+                                            <small>EC2024056</small>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <strong>Atomic Habits</strong>
+                                    <small>James Clear</small>
+                                </td>
+
+                                <td>
+                                    <span class="transaction-type return-type">
+                                        <i class="fas fa-arrow-down"></i>
+                                        Return
+                                    </span>
+                                </td>
+
+                                <td>15 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-success">Returned</span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="table-avatar">AM</div>
+                                        <div>
+                                            <strong>Aditya Mishra</strong>
+                                            <small>ME2024034</small>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <strong>Introduction to Algorithms</strong>
+                                    <small>Thomas H. Cormen</small>
+                                </td>
+
+                                <td>
+                                    <span class="transaction-type issue-type">
+                                        <i class="fas fa-arrow-up"></i>
+                                        Issue
+                                    </span>
+                                </td>
+
+                                <td>14 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-chocolate">Issued</span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="student-cell">
+                                        <div class="table-avatar">SN</div>
+                                        <div>
+                                            <strong>Simran Negi</strong>
+                                            <small>IT2024019</small>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <strong>Computer Networks</strong>
+                                    <small>Andrew S. Tanenbaum</small>
+                                </td>
+
+                                <td>
+                                    <span class="transaction-type return-type">
+                                        <i class="fas fa-arrow-down"></i>
+                                        Return
+                                    </span>
+                                </td>
+
+                                <td>14 Sep 2026</td>
+
+                                <td>
+                                    <span class="badge badge-success">Returned</span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= BOTTOM GRID ================= -->
+            <div class="dashboard-grid-two bottom-grid">
+
+                <!-- Overdue Books -->
+                <div class="dashboard-card">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h3>Overdue Books</h3>
+                            <p>Books that need immediate attention</p>
+                        </div>
+
+                        <a href="fines.html" class="view-all">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div class="overdue-list">
+
+                        <div class="overdue-item">
+
+                            <div class="overdue-book-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+
+                            <div class="overdue-info">
+                                <strong>Data Structures Using C</strong>
+                                <span>Vivek Kumar • CS2023045</span>
+                            </div>
+
+                            <div class="overdue-days">
+                                <strong>8 days</strong>
+                                <span>overdue</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="overdue-item">
+
+                            <div class="overdue-book-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+
+                            <div class="overdue-info">
+                                <strong>Operating System Concepts</strong>
+                                <span>Neha Singh • IT2023067</span>
+                            </div>
+
+                            <div class="overdue-days">
+                                <strong>5 days</strong>
+                                <span>overdue</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="overdue-item">
+
+                            <div class="overdue-book-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+
+                            <div class="overdue-info">
+                                <strong>Database Management System</strong>
+                                <span>Rohit Verma • CS2023051</span>
+                            </div>
+
+                            <div class="overdue-days">
+                                <strong>3 days</strong>
+                                <span>overdue</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Library Summary -->
+                <div class="dashboard-card">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h3>Library Summary</h3>
+                            <p>Current collection overview</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-list">
+
+                        <div class="summary-row">
+                            <div>
+                                <i class="fas fa-book"></i>
+                                <span>Total Books</span>
+                            </div>
+
+                            <strong>2,850</strong>
+                        </div>
+
+
+                        <div class="summary-row">
+                            <div>
+                                <i class="fas fa-users"></i>
+                                <span>Registered Students</span>
+                            </div>
+
+                            <strong>1,240</strong>
+                        </div>
+
+
+                        <div class="summary-row">
+                            <div>
+                                <i class="fas fa-book-open"></i>
+                                <span>Books Available</span>
+                            </div>
+
+                            <strong>2,480</strong>
+                        </div>
+
+
+                        <div class="summary-row">
+                            <div>
+                                <i class="fas fa-clock"></i>
+                                <span>Overdue Books</span>
+                            </div>
+
+                            <strong class="summary-danger">24</strong>
+                        </div>
+
+
+                        <div class="summary-row">
+                            <div>
+                                <i class="fas fa-indian-rupee-sign"></i>
+                                <span>Pending Fines</span>
+                            </div>
+
+                            <strong>₹4,850</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="dashboard-footer">
+            <p>
+                © <span data-year></span> College Library Management System.
+                All rights reserved.
+            </p>
+        </footer>
+
+    </main>
+
+
+    <!-- Global JS -->
+    <script src="../js/app.js"></script>
+
+    <!-- Dashboard JS -->
+    <script src="../js/dashboard.js"></script>
+
+</body>
+</html>
